@@ -109,7 +109,7 @@ const mockServerBlueprintSubGen = class extends ServerGenerator {
 
 describe('JHipster entity generator with multiple blueprints', () => {
     const blueprintNames = [
-        'generator-jhipster-my-client-blueprint,generator-jhipster-my-server-blueprint',
+        'generator-finscale-hipsters-my-client-blueprint,generator-finscale-hipsters-my-server-blueprint',
         'my-client-blueprint,my-server-blueprint'
     ];
 

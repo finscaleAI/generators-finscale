@@ -33,7 +33,7 @@ module.exports = class extends BaseGenerator {
             checkJHipster() {
                 const done = this.async();
                 console.log('##### **JHipster Version(s)**');
-                shelljs.exec('npm list generator-jhipster', { silent: true }, (err, stdout, stderr) => {
+                shelljs.exec('npm list generator-finscale-hipsters', { silent: true }, (err, stdout, stderr) => {
                     if (stdout) {
                         console.log(`\n\`\`\`\n${stdout}\`\`\`\n`);
                     }

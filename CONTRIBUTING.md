@@ -238,7 +238,7 @@ Now, running the 'jhipster' command should run your locally installed JHipster v
 
 ```shell
 ➜  ~ ll $(which jhipster)
-lrwxr-xr-x  1 username  admin    63B May 15 11:03 /usr/local/bin/jhipster -> ../../../Users/username/github/generator-jhipster/cli/jhipster.js
+lrwxr-xr-x  1 username  admin    63B May 15 11:03 /usr/local/bin/jhipster -> ../../../Users/username/github/generator-jhipster/cli/finscale-hipster.js
 ```
 
 You can test your setup by making a small change in your cloned generator, and running again on an existing JHipster project:
@@ -275,7 +275,7 @@ As modifying the JHipster generator includes modifying Java and JavaScript templ
 
 ### Use a debugger
 
-It is possible to debug JHipster's code using a Node.js debugger. To achieve this, setup your debugger to launch `cli/jhipster.js`.
+It is possible to debug JHipster's code using a Node.js debugger. To achieve this, setup your debugger to launch `cli/finscale-hipster.js`.
 
 #### Debugging with VSCode
 

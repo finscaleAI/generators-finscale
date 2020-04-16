@@ -26,8 +26,8 @@ const path = require('path');
 
 const { normalizeBlueprintName, packageNameToNamespace, loadYoRc, loadBlueprintsFromConfiguration } = require('../generators/utils');
 
-const CLI_NAME = 'jhipster';
-const GENERATOR_NAME = 'generator-jhipster';
+const CLI_NAME = 'finscale-hipsters';
+const GENERATOR_NAME = 'generator-finscale-jhipsters';
 
 const debug = function(msg) {
     if (this.debugEnabled) {
@@ -99,7 +99,7 @@ const toString = item => {
 const initHelp = (program, cliName) => {
     program.on('--help', () => {
         logger.debug('Adding additional help info');
-        logger.info(`  For more info visit ${chalk.blue('https://www.jhipster.tech')}`);
+        logger.info(`  For more info visit ${chalk.blue('https://www.finscale-hipsters.com')}`);
         logger.info('');
     });
 
@@ -200,7 +200,7 @@ const done = errorMsg => {
     if (errorMsg) {
         logger.error(`${chalk.red.bold('ERROR!')} ${errorMsg}`);
     } else {
-        logger.info(chalk.green.bold('Congratulations, JHipster execution is complete!'));
+        logger.info(chalk.green.bold('Congratulations, Finscale Hipsters execution is complete!'));
     }
 };
 

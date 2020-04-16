@@ -1,6 +1,6 @@
 module.exports = {
     foo: {
-        blueprint: 'generator-jhipster-cli',
+        blueprint: 'generator-finscale-hipsters-cli',
         desc: 'Create a new foo.'
     }
 };

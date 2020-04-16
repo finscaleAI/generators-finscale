@@ -53,19 +53,19 @@ function askForApplicationType(meta) {
     const applicationTypeChoices = [
         {
             value: DEFAULT_APPTYPE,
-            name: 'Monolithic application (recommended for simple projects)'
+            name: 'Monolithic application (recommended for simple projects) for fineract-1.x'
         },
         {
             value: 'microservice',
-            name: 'Microservice application'
+            name: 'Microservice application (for fineract-cn)'
         },
         {
             value: 'gateway',
-            name: 'Microservice gateway'
+            name: 'Finscale Microservice gateway'
         },
         {
             value: 'uaa',
-            name: 'JHipster UAA server'
+            name: 'Finscale Hipsters UAA server'
         }
     ];
 

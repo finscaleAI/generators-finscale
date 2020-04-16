@@ -89,7 +89,7 @@ describe('JHipster upgrade generator', function() {
     });
     describe('blueprint application', () => {
         const cwd = process.cwd();
-        const blueprintName = 'generator-jhipster-sample-blueprint';
+        const blueprintName = 'generator-finscale-hipsters-sample-blueprint';
         const blueprintVersion = '0.1.1';
         before(done => {
             let workingDirectory;

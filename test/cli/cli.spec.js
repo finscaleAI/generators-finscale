@@ -47,7 +47,7 @@ describe('jhipster cli test', () => {
                 expect(error).to.not.be.null;
                 expect(error.code).to.equal(1);
                 /* eslint-disable prettier/prettier */
-                expect(stdout.includes('No custom commands found within blueprint: generator-jhipster-bar')).to.be.true;
+                expect(stdout.includes('No custom commands found within blueprint: generator-finscale-hipsters-bar')).to.be.true;
                 expect(stderr.includes('foo is not a known command')).to.be.true;
                 done();
             });
@@ -63,8 +63,8 @@ describe('jhipster cli test', () => {
                 expect(error).to.not.be.null;
                 expect(error.code).to.equal(1);
                 /* eslint-disable prettier/prettier */
-                expect(stdout.includes('No custom commands found within blueprint: generator-jhipster-bar')).to.be.true;
-                expect(stdout.includes('No custom commands found within blueprint: generator-jhipster-baz')).to.be.true;
+                expect(stdout.includes('No custom commands found within blueprint: generator-finscale-hipsters-bar')).to.be.true;
+                expect(stdout.includes('No custom commands found within blueprint: generator-finscale-hipsters-baz')).to.be.true;
                 expect(stderr.includes('foo is not a known command')).to.be.true;
                 done();
             });

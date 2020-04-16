@@ -30,7 +30,7 @@ jobs:
           JHI_LIB_REPO: https://github.com/jhipster/jhipster.git
           JHI_LIB_BRANCH: master
           # if JHI_GEN_BRANCH value is release, use the release from NPM
-          JHI_GEN_REPO: https://github.com/jhipster/generator-jhipster.git
+          JHI_GEN_REPO: https://github.com/jhipster/generator-finscale-hipsters.git
           JHI_GEN_BRANCH: master
           # specific config
           SPRING_OUTPUT_ANSI_ENABLED: NEVER
@@ -115,7 +115,7 @@ jobs:
           # Otherwise the namespace will be the path instead of jhispter:*.
           #----------------------------------------------------------------------
           - checkout: self
-            path: generator-jhipster
+            path: generator-finscale-hipsters
           #----------------------------------------------------------------------
           # Install all tools and check configuration
           #----------------------------------------------------------------------

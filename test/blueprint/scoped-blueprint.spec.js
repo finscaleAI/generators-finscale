@@ -16,7 +16,7 @@ describe('JHipster application generator with scoped blueprint', () => {
                 .run(path.join(__dirname, '../../generators/app'))
                 .inTmpDir(dir => {
                     // Fake the presence of the blueprint in node_modules
-                    const fakeBlueprintModuleDir = path.join(dir, 'node_modules/@jhipster/generator-jhipster-scoped-blueprint');
+                    const fakeBlueprintModuleDir = path.join(dir, 'node_modules/@jhipster/generator-finscale-hipsters-scoped-blueprint');
                     fse.ensureDirSync(fakeBlueprintModuleDir);
                     fse.copySync(path.join(__dirname, '../../test/templates/fake-blueprint'), fakeBlueprintModuleDir);
                 })
@@ -24,7 +24,7 @@ describe('JHipster application generator with scoped blueprint', () => {
                     'from-cli': true,
                     skipInstall: true,
                     skipChecks: true,
-                    blueprints: '@jhipster/generator-jhipster-scoped-blueprint'
+                    blueprints: '@jhipster/generator-finscale-hipsters-scoped-blueprint'
                 })
                 .withPrompts({
                     baseName: 'jhipster',
@@ -60,7 +60,7 @@ describe('JHipster application generator with scoped blueprint', () => {
 
         it('blueprint version is saved in .yo-rc.json', () => {
             assert.JSONFileContent('.yo-rc.json', {
-                'generator-jhipster': { blueprints: [{ name: '@jhipster/generator-jhipster-scoped-blueprint', version: '9.9.9' }] }
+                'generator-jhipster': { blueprints: [{ name: '@jhipster/generator-finscale-hipsters-scoped-blueprint', version: '9.9.9' }] }
             });
         });
         it('blueprint module and version are in package.json', () => {

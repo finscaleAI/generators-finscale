@@ -664,7 +664,7 @@ function packageNameToNamespace(packageName) {
 }
 
 /**
- * Normalize blueprint name: prepend 'generator-jhipster-' if needed
+ * Normalize blueprint name: prepend 'generator-finscale-hipsters-' if needed
  * @param {string} blueprint - name of the blueprint
  * @returns {string} the normalized blueprint name
  */
