@@ -64,7 +64,7 @@ module.exports = class extends BaseGenerator {
     /* ======================================================================== */
 
     /**
-     * Look for every blueprint config and move them to 'generator-jhipster' namespace.
+     * Look for every blueprint config and move them to 'generator-finscale-hipsters' namespace.
      */
     async _migrateAllBlueprints() {
         if (!this.isJhipsterVersionLessThan('6.6.1')) {
@@ -83,7 +83,7 @@ module.exports = class extends BaseGenerator {
     }
 
     /**
-     * Move configs to 'generator-jhipster' namespace.
+     * Move configs to 'generator-finscale-hipsters' namespace.
      */
     async _migrateConfigs(blueprintConfigs) {
         if (!Array.isArray(blueprintConfigs)) {

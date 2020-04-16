@@ -52,12 +52,12 @@ if [[ "$JHI_REPO" == *"/generator-jhipster" ]]; then
     npm install -g "$JHI_HOME"
 elif [[ "$JHI_GEN_BRANCH" == "release" ]]; then
     echo "*** generator-jhipster: use release version"
-    npm install -g generator-jhipster
+    npm install -g generator-finscale-hipsters
 
 else
     echo "*** generator-jhipster: JHI_GEN_REPO=$JHI_GEN_REPO with JHI_GEN_BRANCH=$JHI_GEN_BRANCH"
-    git clone "$JHI_GEN_REPO" generator-jhipster
-    cd generator-jhipster
+    git clone "$JHI_GEN_REPO" generator-finscale-hipsters
+    cd generator-finscale-hipsters
     if [ "$JHI_GEN_BRANCH" == "latest" ]; then
         LATEST=$(git describe --abbrev=0)
         git checkout "$LATEST"
@@ -67,5 +67,5 @@ else
     git --no-pager log -n 10 --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
     npm ci
-    npm install -g "$HOME"/generator-jhipster
+    npm install -g "$HOME"/generator-finscale-hipsters
 fi

@@ -64,18 +64,18 @@ module.exports = class JHipsterServerGenerator extends BaseBlueprintGenerator {
         this.registerPrettierTransform();
     }
 
-    // Public API method used by the getter and also by Blueprints
-    _initializing() {
-        return {
-            validateFromCli() {
-                this.checkInvocationFromCLI();
-            },
+  // Public API method used by the getter and also by Blueprints
+  _initializing() {
+    return {
+      validateFromCli() {
+        this.checkInvocationFromCLI();
+      },
 
-            displayLogo() {
-                if (this.logo) {
-                    this.printJHipsterLogo();
-                }
-            },
+      displayLogo() {
+        if (this.logo) {
+          this.printJHipsterLogo();
+        }
+      },
 
             setupServerconsts() {
                 // Make constants available in templates
@@ -121,7 +121,7 @@ module.exports = class JHipsterServerGenerator extends BaseBlueprintGenerator {
                 this.DOCKER_GRAFANA = constants.DOCKER_GRAFANA;
                 this.DOCKER_COMPOSE_FORMAT_VERSION = constants.DOCKER_COMPOSE_FORMAT_VERSION;
 
-                this.JAVA_VERSION = constants.JAVA_VERSION;
+        this.JAVA_VERSION = constants.JAVA_VERSION;
 
                 this.NODE_VERSION = constants.NODE_VERSION;
                 this.NPM_VERSION = constants.NPM_VERSION;
@@ -135,9 +135,9 @@ module.exports = class JHipsterServerGenerator extends BaseBlueprintGenerator {
                 this.HIBERNATE_VERSION = constants.HIBERNATE_VERSION;
                 this.JACOCO_VERSION = constants.JACOCO_VERSION;
 
-                this.KAFKA_VERSION = constants.KAFKA_VERSION;
+        this.KAFKA_VERSION = constants.KAFKA_VERSION;
 
-                this.JACKSON_DATABIND_NULLABLE_VERSION = constants.JACKSON_DATABIND_NULLABLE_VERSION;
+        this.JACKSON_DATABIND_NULLABLE_VERSION = constants.JACKSON_DATABIND_NULLABLE_VERSION;
 
                 this.packagejs = packagejs;
             },
@@ -174,10 +174,10 @@ module.exports = class JHipsterServerGenerator extends BaseBlueprintGenerator {
         };
     }
 
-    get initializing() {
-        if (useBlueprints) return;
-        return this._initializing();
-    }
+  get initializing() {
+    if (useBlueprints) return;
+    return this._initializing();
+  }
 
     // Public API method used by the getter and also by Blueprints
     _prompting() {
@@ -195,10 +195,10 @@ module.exports = class JHipsterServerGenerator extends BaseBlueprintGenerator {
         };
     }
 
-    get prompting() {
-        if (useBlueprints) return;
-        return this._prompting();
-    }
+  get prompting() {
+    if (useBlueprints) return;
+    return this._prompting();
+  }
 
     // Public API method used by the getter and also by Blueprints
     _configuring() {
@@ -294,7 +294,14 @@ module.exports = class JHipsterServerGenerator extends BaseBlueprintGenerator {
                 }
             },
         };
-    }
+        if (this.enableTranslation && !this.configOptions.skipI18nQuestion) {
+          config.nativeLanguage = this.nativeLanguage;
+          config.languages = this.languages;
+        }
+        this.config.set(config);
+      }
+    };
+  }
 
     get preparing() {
         if (useBlueprints) return;
@@ -327,20 +334,20 @@ module.exports = class JHipsterServerGenerator extends BaseBlueprintGenerator {
         };
     }
 
-    get default() {
-        if (useBlueprints) return;
-        return this._default();
-    }
+  get default() {
+    if (useBlueprints) return;
+    return this._default();
+  }
 
     // Public API method used by the getter and also by Blueprints
     _writing() {
         return { ...writeFiles(), ...super._missingPostWriting() };
     }
 
-    get writing() {
-        if (useBlueprints) return;
-        return this._writing();
-    }
+  get writing() {
+    if (useBlueprints) return;
+    return this._writing();
+  }
 
     _postWriting() {
         return {
@@ -479,16 +486,16 @@ module.exports = class JHipsterServerGenerator extends BaseBlueprintGenerator {
         };
     }
 
-    get install() {
-        if (useBlueprints) return;
-        return this._install();
-    }
+  get install() {
+    if (useBlueprints) return;
+    return this._install();
+  }
 
-    // Public API method used by the getter and also by Blueprints
-    _end() {
-        return {
-            end() {
-                this.log(chalk.green.bold('\nServer application generated successfully.\n'));
+  // Public API method used by the getter and also by Blueprints
+  _end() {
+    return {
+      end() {
+        this.log(chalk.green.bold('\nServer application generated successfully.\n'));
 
                 let executable = 'mvnw';
                 if (this.buildTool === 'gradle') {

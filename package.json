@@ -1,7 +1,7 @@
 {
-    "name": "generator-jhipster",
-    "version": "6.10.3",
-    "description": "Spring Boot + Angular/React in one handy generator",
+    "name": "generator-finscale-hipsters",
+    "version": "0.0.1",
+    "description": "Spring Boot + Angular/React in one handy generator for financial Applications",
     "files": [
         "cli",
         "generators",
@@ -21,18 +21,23 @@
         "Twitter Bootstrap",
         "Webpack",
         "Docker",
-        "JDL"
+        "fork of jhipster"
     ],
     "homepage": "https://www.jhipster.tech/",
     "bugs": "https://github.com/jhipster/generator-jhipster/issues",
     "author": {
-        "name": "Julien Dubois",
-        "email": "",
-        "url": "https://github.com/jdubois"
+        "primary": {
+            "name": "Julien Dubois",
+            "email": "",
+            "url": "https://github.com/jdubois"
+        },
+        "secondary": {
+            "name": "Saransh Sharma"
+        }
     },
     "main": "cli/index.js",
     "bin": {
-        "jhipster": "./cli/jhipster.js"
+        "finscale-hipsters": "./cli/finscale-hipster.js"
     },
     "repository": {
         "type": "git",

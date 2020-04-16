@@ -27,7 +27,7 @@ describe('JHipster application generator with blueprint', () => {
                             'generator-jhipster': jhipsterVersion,
                         },
                     };
-                    const fakeBlueprintModuleDir = path.join(dir, 'node_modules/generator-jhipster-myblueprint');
+                    const fakeBlueprintModuleDir = path.join(dir, 'node_modules/generator-finscale-hipsters-myblueprint');
                     fse.ensureDirSync(fakeBlueprintModuleDir);
                     fse.copySync(path.join(__dirname, '../../test/templates/fake-blueprint'), fakeBlueprintModuleDir);
                     fse.writeJsonSync(path.join(fakeBlueprintModuleDir, 'package.json'), packagejs);
@@ -79,7 +79,7 @@ describe('JHipster application generator with blueprint', () => {
                             'generator-jhipster': '1.1.1',
                         },
                     };
-                    const fakeBlueprintModuleDir = path.join(dir, 'node_modules/generator-jhipster-myblueprint');
+                    const fakeBlueprintModuleDir = path.join(dir, 'node_modules/generator-finscale-hipsters-myblueprint');
                     fse.ensureDirSync(fakeBlueprintModuleDir);
                     fse.copySync(path.join(__dirname, '../../test/templates/fake-blueprint'), fakeBlueprintModuleDir);
                     fse.writeJsonSync(path.join(fakeBlueprintModuleDir, 'package.json'), packagejs);
@@ -130,7 +130,7 @@ describe('JHipster application generator with blueprint', () => {
                             'generator-jhipster': '^6.0.0',
                         },
                     };
-                    const fakeBlueprintModuleDir = path.join(dir, 'node_modules/generator-jhipster-myblueprint');
+                    const fakeBlueprintModuleDir = path.join(dir, 'node_modules/generator-finscale-hipsters-myblueprint');
                     fse.ensureDirSync(fakeBlueprintModuleDir);
                     fse.copySync(path.join(__dirname, '../../test/templates/fake-blueprint'), fakeBlueprintModuleDir);
                     fse.writeJsonSync(path.join(fakeBlueprintModuleDir, 'package.json'), packagejs);
@@ -182,7 +182,7 @@ describe('JHipster application generator with blueprint', () => {
                             'generator-jhipster': '1.1.1',
                         },
                     };
-                    const fakeBlueprintModuleDir = path.join(dir, 'node_modules/generator-jhipster-myblueprint');
+                    const fakeBlueprintModuleDir = path.join(dir, 'node_modules/generator-finscale-hipsters-myblueprint');
                     fse.ensureDirSync(fakeBlueprintModuleDir);
                     fse.copySync(path.join(__dirname, '../../test/templates/fake-blueprint'), fakeBlueprintModuleDir);
                     fse.writeJsonSync(path.join(fakeBlueprintModuleDir, 'package.json'), packagejs);

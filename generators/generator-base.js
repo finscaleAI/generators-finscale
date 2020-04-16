@@ -1817,14 +1817,9 @@ module.exports = class JHipsterBaseGenerator extends PrivateBase {
      */
     printJHipsterLogo() {
         this.log('\n');
-        this.log(`${chalk.green('        ██╗')}${chalk.red(' ██╗   ██╗ ████████╗ ███████╗   ██████╗ ████████╗ ████████╗ ███████╗')}`);
-        this.log(`${chalk.green('        ██║')}${chalk.red(' ██║   ██║ ╚══██╔══╝ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═════╝ ██╔═══██╗')}`);
-        this.log(`${chalk.green('        ██║')}${chalk.red(' ████████║    ██║    ███████╔╝ ╚█████╗     ██║    ██████╗   ███████╔╝')}`);
-        this.log(`${chalk.green('  ██╗   ██║')}${chalk.red(' ██╔═══██║    ██║    ██╔════╝   ╚═══██╗    ██║    ██╔═══╝   ██╔══██║')}`);
-        this.log(`${chalk.green('  ╚██████╔╝')}${chalk.red(' ██║   ██║ ████████╗ ██║       ██████╔╝    ██║    ████████╗ ██║  ╚██╗')}`);
-        this.log(`${chalk.green('   ╚═════╝ ')}${chalk.red(' ╚═╝   ╚═╝ ╚═══════╝ ╚═╝       ╚═════╝     ╚═╝    ╚═══════╝ ╚═╝   ╚═╝')}\n`);
-        this.log(chalk.white.bold('                            https://www.jhipster.tech\n'));
-        this.log(chalk.white('Welcome to JHipster ') + chalk.yellow(`v${packagejs.version}`));
+        this.log(chalk.green('Finscale Hipsters'))
+        this.log(chalk.white.bold('                            https://www.finscale-hipsters.com\n'));
+        this.log(chalk.white('Welcome to Finscale Hipsters ') + chalk.yellow(`v${packagejs.version}`));
         this.log(chalk.white(`Application files will be generated in folder: ${chalk.yellow(process.cwd())}`));
         if (process.cwd() === this.getUserHome()) {
             this.log(chalk.red.bold('\n️⚠️  WARNING ⚠️  You are in your HOME folder!'));
@@ -1839,12 +1834,14 @@ module.exports = class JHipsterBaseGenerator extends PrivateBase {
             )
         );
         this.log(
-            chalk.white(`  Documentation for creating an application is at ${chalk.yellow('https://www.jhipster.tech/creating-an-app/')}`)
+            chalk.white(
+                `  Documentation for creating an application is at ${chalk.yellow('https://www.fincale-hipsters.com/creating-an-app/')}`
+            )
         );
         this.log(
             chalk.white(
-                `  If you find JHipster useful, consider sponsoring the project at ${chalk.yellow(
-                    'https://opencollective.com/generator-jhipster'
+                `  If you find Finscale Hipsters useful, consider sponsoring the project at ${chalk.yellow(
+                    'https://opencollective.com/generator-finscale-hipsters'
                 )}`
             )
         );
@@ -1866,6 +1863,10 @@ module.exports = class JHipsterBaseGenerator extends PrivateBase {
      * Checks if there is a newer JHipster version available.
      */
     checkForNewVersion() {
+        // there is no need as of now.
+        if (packagejs.version === '0.0.1') {
+            return;
+        }
         try {
             const done = this.async();
             shelljs.exec(
@@ -2451,7 +2452,7 @@ module.exports = class JHipsterBaseGenerator extends PrivateBase {
     }
 
     /**
-     * Fetch files from the generator-jhipster instance installed
+     * Fetch files from the generator-finscale-hipsters instance installed
      * @param {string} subpath : the path to fetch from
      */
     fetchFromInstalledJHipster(subpath) {
