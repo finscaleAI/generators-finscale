@@ -16,14 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package <%= packageName %>.service.rest;
+package <%= packageName %>.<%= baseName %>.service.rest;
 
-import <%= packageName %>.api.v1.PermittableGroupIds;
-import <%= packageName %>.api.v1.domain.Sample;
-import <%= packageName %>.service.ServiceConstants;
-import <%= packageName %>.service.internal.command.InitializeServiceCommand;
-import <%= packageName %>.service.internal.command.SampleCommand;
-import <%= packageName %>.service.internal.service.SampleService;
+import <%= packageName %>.<%= baseName %>.api.v1.PermittableGroupIds;
+import <%= packageName %>.<%= baseName %>.api.v1.domain.Sample;
+import <%= packageName %>.<%= baseName %>.service.ServiceConstants;
+import <%= packageName %>.<%= baseName %>.service.internal.command.InitializeServiceCommand;
+import <%= packageName %>.<%= baseName %>.service.internal.command.SampleCommand;
+import <%= packageName %>.<%= baseName %>.service.internal.service.SampleService;
 import java.util.List;
 import javax.validation.Valid;
 import org.apache.fineract.cn.anubis.annotation.AcceptedTokenType;

@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.template.service.internal.command.handler;
+package <%= packageName %>.<%= baseName %>.service.internal.command.handler;
 
-import org.apache.fineract.cn.template.api.v1.events.EventConstants;
-import org.apache.fineract.cn.template.service.ServiceConstants;
-import org.apache.fineract.cn.template.service.internal.command.InitializeServiceCommand;
+import <%= packageName %>.<%= baseName %>.api.v1.events.EventConstants;
+import <%= packageName %>.<%= baseName %>.service.ServiceConstants;
+import <%= packageName %>.<%= baseName %>.service.internal.command.InitializeServiceCommand;
 import javax.sql.DataSource;
 import org.apache.fineract.cn.command.annotation.Aggregate;
 import org.apache.fineract.cn.command.annotation.CommandHandler;

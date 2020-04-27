@@ -16,13 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package <%= packageName %>.service.internal.repository;
+package <%= packageName %>.<%= baseName %>.service.internal.repository;
 
 import javax.persistence.*;
 
 @SuppressWarnings("unused")
 @Entity
-@Table(name = "template_samples")
+@Table(name = "<%= baseName %>_samples")
 public class SampleJpaEntity {
 
   @Id

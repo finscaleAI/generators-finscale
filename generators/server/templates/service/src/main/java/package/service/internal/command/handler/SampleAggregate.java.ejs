@@ -16,12 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package <%= packageName %>.service.internal.command.handler;
+package <%= packageName %>.<%= baseName %>.service.internal.command.handler;
 
-import <%= packageName %>.api.v1.events.EventConstants;
-import <%= packageName %>.service.internal.command.SampleCommand;
-import <%= packageName %>.service.internal.repository.SampleJpaEntity;
-import <%= packageName %>.service.internal.repository.SampleJpaEntityRepository;
+import <%= packageName %>.<%= baseName %>.api.v1.events.EventConstants;
+import <%= packageName %>.<%= baseName %>.service.internal.command.SampleCommand;
+import <%= packageName %>.<%= baseName %>.service.internal.repository.SampleJpaEntity;
+import <%= packageName %>.<%= baseName %>.service.internal.repository.SampleJpaEntityRepository;
 import org.apache.fineract.cn.command.annotation.Aggregate;
 import org.apache.fineract.cn.command.annotation.CommandHandler;
 import org.apache.fineract.cn.command.annotation.CommandLogLevel;
