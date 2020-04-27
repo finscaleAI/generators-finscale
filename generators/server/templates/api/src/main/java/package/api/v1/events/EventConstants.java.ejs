@@ -16,12 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package <%= packageName %>.api.v1.events;
+package <%= packageName %>.<%= baseName %>.api.v1.events;
 
 @SuppressWarnings("unused")
 public interface EventConstants {
 
-  String DESTINATION = "template-v1";
+  String DESTINATION = "<%= baseName %>-v1";
   String SELECTOR_NAME = "action";
   String INITIALIZE = "initialize";
   String POST_SAMPLE = "post-sample";

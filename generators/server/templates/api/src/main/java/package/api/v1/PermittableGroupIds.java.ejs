@@ -16,10 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package <%= packageName %>.api.v1;
+package <%= packageName %>.<%= baseName %>.api.v1;
 
 @SuppressWarnings("unused")
 public interface PermittableGroupIds {
-  String SAMPLE_MANAGEMENT = "template__v1__samples";
-  String SELF_MANAGEMENT = "template__v1__self";
+  String SAMPLE_MANAGEMENT = "<%= baseName %>__v1__samples";
+  String SELF_MANAGEMENT = "<%= baseName %>__v1__self";
 }
