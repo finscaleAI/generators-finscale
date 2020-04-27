@@ -35,7 +35,7 @@ module.exports = class extends BaseBlueprintGenerator {
         this.configOptions = opts.configOptions || {};
         // This adds support for a `--from-cli` flag
         this.option('from-cli', {
-            desc: 'Indicates the command is run from JHipster CLI',
+            desc: 'Indicates the command is run from Finscale-Hipsters CLI',
             type: Boolean,
             defaults: false
         });
