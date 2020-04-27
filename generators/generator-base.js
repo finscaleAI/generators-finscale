@@ -1816,7 +1816,7 @@ module.exports = class extends PrivateBase {
                 type: 'confirm',
                 name: 'enableTranslation',
                 message: 'Would you like to enable internationalization support?',
-                default: true
+                default: false
             },
             {
                 when: response => response.enableTranslation === true,
