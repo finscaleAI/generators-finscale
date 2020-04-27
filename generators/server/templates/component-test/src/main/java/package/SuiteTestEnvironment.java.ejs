@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package <%= packageName %>;
+package <%= packageName %>.<%= baseName %>;
 
 import org.apache.fineract.cn.test.env.TestEnvironment;
 import org.apache.fineract.cn.test.fixture.cassandra.CassandraInitializer;
@@ -34,7 +34,7 @@ import org.junit.rules.TestRule;
  */
 public class SuiteTestEnvironment {
   static final String APP_VERSION = "1";
-  static final String APP_NAME = "template-v" + APP_VERSION;
+  static final String APP_NAME = "<%= baseName %>-v" + APP_VERSION;
 
   static final TestEnvironment testEnvironment = new TestEnvironment(APP_NAME);
   static final CassandraInitializer cassandraInitializer = new CassandraInitializer();

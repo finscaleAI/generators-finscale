@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package <%= packageName %>.listener;
+package <%= packageName %>.<%= baseName %>.listener;
 
-import <%= packageName %>.api.v1.events.EventConstants;
-import <%= packageName %>.lang.config.TenantHeaderFilter;
-import <%= packageName %>.test.listener.EventRecorder;
+import <%= packageName %>.<%= baseName %>.api.v1.events.EventConstants;
+import <%= packageName %>.<%= baseName %>.lang.config.TenantHeaderFilter;
+import <%= packageName %>.<%= baseName %>.test.listener.EventRecorder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.handler.annotation.Header;
