@@ -286,15 +286,15 @@ function askForServerSideOpts(meta) {
       message: 'Would you like to use Maven or Gradle for building the backend?',
       choices: [
         {
-          value: 'maven',
-          name: 'Maven'
-        },
-        {
           value: 'gradle',
           name: 'Gradle'
+        },
+        {
+          value: 'maven',
+          name: 'Maven'
         }
       ],
-      default: 'maven'
+      default: 'gradle'
     }
   ];
 

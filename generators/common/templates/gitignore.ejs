@@ -1,26 +1,4 @@
 ######################
-# Project Specific
-######################<% if (!skipClient) { %>
-/<%= CLIENT_MAIN_SRC_DIR %>content/css/main.css<% } %>
-/<%= CLIENT_DIST_DIR %>**
-/<%= TEST_DIR %>javascript/coverage/
-
-######################
-# Node
-######################
-/node/
-node_tmp/
-node_modules/
-npm-debug.log.*
-/.awcache/*
-/.cache-loader/*
-
-######################
-# SASS
-######################
-.sass-cache/
-
-######################
 # Eclipse
 ######################
 *.pydevproject
@@ -37,7 +15,6 @@ local.properties
 .settings/
 .loadpath
 .factorypath
-/<%= SERVER_MAIN_RES_DIR %>rebel.xml
 
 # External tool builders
 .externalToolBuilders/**
@@ -71,12 +48,6 @@ out/
 .vscode/
 
 ######################
-# Maven
-######################
-/log/
-/target/
-
-######################
 # Gradle
 ######################
 .gradle/
@@ -91,57 +62,12 @@ out/
 *.db
 
 ######################
-# Windows
-######################
-# Windows image file caches
-Thumbs.db
-
-# Folder config file
-Desktop.ini
-
-######################
 # Mac OSX
 ######################
 .DS_Store
 .svn
 
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-######################
-# Directories
-######################
-/bin/
-/deploy/
-
-######################
-# Logs
-######################
-*.log*
-
-######################
-# Others
-######################
-*.class
-*.*~
-*~
-.merge_file*
-
 ######################
 # Gradle Wrapper
 ######################
 !gradle/wrapper/gradle-wrapper.jar
-
-######################
-# Maven Wrapper
-######################
-!.mvn/wrapper/maven-wrapper.jar
-
-######################
-# ESLint
-######################
-.eslintcache

@@ -21,13 +21,13 @@
  * The default is to use a file path string. It implies use of the template method.
  * For any other config an object { file:.., method:.., template:.. } can be used
  */
-const prettierConfigFiles = {
-    global: [
-        {
-            templates: ['.prettierrc', '.prettierignore']
-        }
-    ]
-};
+//const prettierConfigFiles = {
+//    global: [
+//        {
+//            templates: ['.prettierrc', '.prettierignore']
+//        }
+//    ]
+//};
 
 const commonFiles = {
     global: [
@@ -38,20 +38,20 @@ const commonFiles = {
                     file: 'gitignore',
                     renameTo: () => '.gitignore'
                 },
-                {
-                    file: 'gitattributes',
-                    renameTo: () => '.gitattributes',
-                    method: 'copy'
-                },
-                {
-                    file: 'editorconfig',
-                    renameTo: () => '.editorconfig',
-                    method: 'copy'
-                },
-                {
-                    file: 'sonar-project.properties',
-                    renameTo: () => 'sonar-project.properties'
-                }
+                //{
+                //    file: 'gitattributes',
+                //    renameTo: () => '.gitattributes',
+                //    method: 'copy'
+                //},
+                //{
+                //    file: 'editorconfig',
+                //    renameTo: () => '.editorconfig',
+                //    method: 'copy'
+                //},
+                //{
+                //    file: 'sonar-project.properties',
+                //    renameTo: () => 'sonar-project.properties'
+                //}
             ]
         }
     ]
@@ -67,6 +67,6 @@ function writeFiles() {
 
 module.exports = {
     writeFiles,
-    prettierConfigFiles,
+    // prettierConfigFiles,
     commonFiles
 };
