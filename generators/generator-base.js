@@ -1629,7 +1629,7 @@ module.exports = class extends PrivateBase {
      */
     printJHipsterLogo() {
         this.log('\n');
-        this.log(chalk.green('Finscale Hipsters'))
+        this.log(chalk.green('Finscale Hipsters'));
         this.log(chalk.white.bold('                            https://www.finscale-hipsters.com\n'));
         this.log(chalk.white('Welcome to Finscale Hipsters ') + chalk.yellow(`v${packagejs.version}`));
         this.log(chalk.white(`Application files will be generated in folder: ${chalk.yellow(process.cwd())}`));
