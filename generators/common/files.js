@@ -34,24 +34,14 @@ const commonFiles = {
         {
             templates: [
                 'README.md',
+                'HEADER',
+                'LICENSE',
+                'NOTICE.txt',
+                'travis.sh',
                 {
-                    file: 'gitignore',
-                    renameTo: () => '.gitignore'
-                },
-                //{
-                //    file: 'gitattributes',
-                //    renameTo: () => '.gitattributes',
-                //    method: 'copy'
-                //},
-                //{
-                //    file: 'editorconfig',
-                //    renameTo: () => '.editorconfig',
-                //    method: 'copy'
-                //},
-                //{
-                //    file: 'sonar-project.properties',
-                //    renameTo: () => 'sonar-project.properties'
-                //}
+                    file: 'travis.yml',
+                    renameTo: () => '.travis.yml'
+                }
             ]
         }
     ]
