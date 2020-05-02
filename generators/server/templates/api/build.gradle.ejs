@@ -33,8 +33,48 @@
  * limitations under the License.
  */
 
-rootProject.name = "<%= dasherizedBaseName %>"
+buildscript {
+    repositories {
+        jcenter()
+    }
 
-includeBuild 'api'
-includeBuild 'service'
-includeBuild 'component-test'
+    dependencies {
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE'
+    }
+}
+
+plugins {
+    id 'com.github.hierynomus.license' version '0.15.0'
+    id 'org.nosphere.apache.rat' version '0.6.0'
+    id 'com.jfrog.artifactory' version '4.15.1'
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'maven-publish'
+    id 'java'
+    id 'idea'
+}
+
+apply from: '../shared.gradle'
+
+dependencies {
+    compile(
+            [group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign'],
+            [group: 'org.apache.fineract.cn', name: 'api', version: versions.frameworkapi],
+            [group: 'org.hibernate', name: 'hibernate-validator', version: versions.validator],
+            [group: 'org.hibernate', name: 'hibernate-validator-annotation-processor', version: versions.validator]
+    )
+
+    testCompile(
+            [group: 'org.apache.fineract.cn', name: 'test', version: versions.frameworktest],
+    )
+}
+
+publishing {
+    publications {
+        api(MavenPublication) {
+            from components.java
+            groupId project.group
+            artifactId project.name
+            version project.findProperty('externalVersion') ?: project.version
+        }
+    }
+}

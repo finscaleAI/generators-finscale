@@ -37,22 +37,23 @@ module.exports = class extends BaseBlueprintGenerator {
     this.configOptions = this.options.configOptions || {};
     // This adds support for a `--from-cli` flag
     this.option('from-cli', {
-      desc: 'Indicates the command is run from JHipster CLI',
+      desc: 'Indicates the command is run from Finscale-Hipster CLI',
       type: Boolean,
-      defaults: false
+      defaults: false,
     });
     // This adds support for a `--[no-]client-hook` flag
     this.option('client-hook', {
       desc: 'Enable Webpack hook from maven/gradle build',
       type: Boolean,
-      defaults: false
+      defaults: false,
     });
 
-    // This adds support for a `--experimental` flag which can be used to enable experimental features
+    // This adds support for a `--experimental` flag which can be used to enable
+    // experimental features
     this.option('experimental', {
       desc: 'Enable experimental features. Please note that these features may be unstable and may undergo breaking changes at any time',
       type: Boolean,
-      defaults: false
+      defaults: false,
     });
 
     this.uaaBaseName = this.options.uaaBaseName || this.configOptions.uaaBaseName || this.config.get('uaaBaseName');
@@ -201,7 +202,8 @@ module.exports = class extends BaseBlueprintGenerator {
         if (this.jhipsterVersion === undefined) {
           this.jhipsterVersion = configuration.get('jhipsterVersion');
         }
-        // preserve old jhipsterVersion value for cleanup which occurs after new config is written into disk
+        // preserve old jhipsterVersion value for cleanup which occurs after new
+        // config is written into disk
         this.jhipsterOldVersion = configuration.get('jhipsterVersion');
         this.authenticationType = configuration.get('authenticationType');
         if (this.authenticationType === 'session') {
@@ -285,7 +287,8 @@ module.exports = class extends BaseBlueprintGenerator {
           if (this.languages === undefined) {
             this.languages = ['en', 'fr'];
           }
-          // user-management will be handled by UAA app, oauth expects users to be managed in IpP
+          // user-management will be handled by UAA app, oauth expects users to
+          // be managed in IpP
           if ((this.applicationType === 'gateway' && this.authenticationType === 'uaa') || this.authenticationType === 'oauth2') {
             this.skipUserManagement = true;
           }
@@ -298,7 +301,7 @@ module.exports = class extends BaseBlueprintGenerator {
 
           this.existingProject = true;
         }
-      }
+      },
     };
   }
 
@@ -338,7 +341,7 @@ module.exports = class extends BaseBlueprintGenerator {
         // Make dist dir available in templates
         this.BUILD_DIR = this.getBuildDirectoryForBuildTool(this.buildTool);
         this.CLIENT_DIST_DIR = this.getResourceBuildDirectoryForBuildTool(this.configOptions.buildTool) + constants.CLIENT_DIST_DIR;
-      }
+      },
     };
   }
 
@@ -364,8 +367,8 @@ module.exports = class extends BaseBlueprintGenerator {
             messageBroker: this.messageBroker,
             serviceDiscoveryType: this.serviceDiscoveryType,
             buildTool: this.buildTool,
-            enableSwaggerCodegen: this.enableSwaggerCodegen
-          }
+            enableSwaggerCodegen: this.enableSwaggerCodegen,
+          },
         });
       },
 
@@ -414,14 +417,14 @@ module.exports = class extends BaseBlueprintGenerator {
           jwtSecretKey: this.jwtSecretKey,
           rememberMeKey: this.rememberMeKey,
           enableTranslation: this.enableTranslation,
-          embeddableLaunchScript: this.embeddableLaunchScript
+          embeddableLaunchScript: this.embeddableLaunchScript,
         };
         if (this.enableTranslation && !this.configOptions.skipI18nQuestion) {
           config.nativeLanguage = this.nativeLanguage;
           config.languages = this.languages;
         }
         this.config.set(config);
-      }
+      },
     };
   }
 
@@ -464,7 +467,7 @@ module.exports = class extends BaseBlueprintGenerator {
         if (this.configOptions.skipI18nQuestion) return;
 
         this.composeLanguagesSub(this, this.configOptions, 'server');
-      }
+      },
     };
   }
 
@@ -497,7 +500,7 @@ module.exports = class extends BaseBlueprintGenerator {
             }
           }
         }
-      }
+      },
     };
   }
 
@@ -521,7 +524,7 @@ module.exports = class extends BaseBlueprintGenerator {
           logMsgComment = ` (${chalk.yellow.bold(executable)} if using Windows Command Prompt)`;
         }
         this.log(chalk.green(`Run your Spring Boot application:\n${chalk.yellow.bold(`./${executable}`)}${logMsgComment}`));
-      }
+      },
     };
   }
 
