@@ -26,7 +26,7 @@ const writeFiles = require('./files').writeFiles;
 const packagejs = require('../../package.json');
 const constants = require('../generator-constants');
 const statistics = require('../statistics');
-const {getBase64Secret, getRandomHex} = require('../utils');
+const { getBase64Secret, getRandomHex } = require('../utils');
 
 let useBlueprints;
 
@@ -37,35 +37,30 @@ module.exports = class extends BaseBlueprintGenerator {
     this.configOptions = this.options.configOptions || {};
     // This adds support for a `--from-cli` flag
     this.option('from-cli', {
-      desc : 'Indicates the command is run from Finscale-Hipster CLI',
-      type : Boolean,
-      defaults : false,
+      desc: 'Indicates the command is run from Finscale-Hipster CLI',
+      type: Boolean,
+      defaults: false,
     });
     // This adds support for a `--[no-]client-hook` flag
     this.option('client-hook', {
-      desc : 'Enable Webpack hook from maven/gradle build',
-      type : Boolean,
-      defaults : false,
+      desc: 'Enable Webpack hook from maven/gradle build',
+      type: Boolean,
+      defaults: false,
     });
 
     // This adds support for a `--experimental` flag which can be used to enable
     // experimental features
     this.option('experimental', {
-      desc :
-          'Enable experimental features. Please note that these features may be unstable and may undergo breaking changes at any time',
-      type : Boolean,
-      defaults : false,
+      desc: 'Enable experimental features. Please note that these features may be unstable and may undergo breaking changes at any time',
+      type: Boolean,
+      defaults: false,
     });
 
-    this.uaaBaseName = this.options.uaaBaseName ||
-                       this.configOptions.uaaBaseName ||
-                       this.config.get('uaaBaseName');
+    this.uaaBaseName = this.options.uaaBaseName || this.configOptions.uaaBaseName || this.config.get('uaaBaseName');
 
     this.setupServerOptions(this);
 
-    useBlueprints = !this.fromBlueprint &&
-                    this.instantiateBlueprints(
-                        'server', {'client-hook' : !this.skipClient});
+    useBlueprints = !this.fromBlueprint && this.instantiateBlueprints('server', { 'client-hook': !this.skipClient });
 
     this.registerPrettierTransform();
   }
@@ -73,7 +68,9 @@ module.exports = class extends BaseBlueprintGenerator {
   // Public API method used by the getter and also by Blueprints
   _initializing() {
     return {
-      validateFromCli() { this.checkInvocationFromCLI(); },
+      validateFromCli() {
+        this.checkInvocationFromCLI();
+      },
 
       displayLogo() {
         if (this.logo) {
@@ -100,8 +97,7 @@ module.exports = class extends BaseBlueprintGenerator {
         this.DOCKER_COUCHBASE = constants.DOCKER_COUCHBASE;
         this.DOCKER_MSSQL = constants.DOCKER_MSSQL;
         this.DOCKER_NEO4J = constants.DOCKER_NEO4J;
-        this.DOCKER_HAZELCAST_MANAGEMENT_CENTER =
-            constants.DOCKER_HAZELCAST_MANAGEMENT_CENTER;
+        this.DOCKER_HAZELCAST_MANAGEMENT_CENTER = constants.DOCKER_HAZELCAST_MANAGEMENT_CENTER;
         this.DOCKER_MEMCACHED = constants.DOCKER_MEMCACHED;
         this.DOCKER_REDIS = constants.DOCKER_REDIS;
         this.DOCKER_CASSANDRA = constants.DOCKER_CASSANDRA;
@@ -111,18 +107,15 @@ module.exports = class extends BaseBlueprintGenerator {
         this.DOCKER_ZOOKEEPER = constants.DOCKER_ZOOKEEPER;
         this.DOCKER_SONAR = constants.DOCKER_SONAR;
         this.DOCKER_JHIPSTER_CONSOLE = constants.DOCKER_JHIPSTER_CONSOLE;
-        this.DOCKER_JHIPSTER_ELASTICSEARCH =
-            constants.DOCKER_JHIPSTER_ELASTICSEARCH;
+        this.DOCKER_JHIPSTER_ELASTICSEARCH = constants.DOCKER_JHIPSTER_ELASTICSEARCH;
         this.DOCKER_JHIPSTER_LOGSTASH = constants.DOCKER_JHIPSTER_LOGSTASH;
         this.DOCKER_TRAEFIK = constants.DOCKER_TRAEFIK;
         this.DOCKER_CONSUL = constants.DOCKER_CONSUL;
-        this.DOCKER_CONSUL_CONFIG_LOADER =
-            constants.DOCKER_CONSUL_CONFIG_LOADER;
+        this.DOCKER_CONSUL_CONFIG_LOADER = constants.DOCKER_CONSUL_CONFIG_LOADER;
         this.DOCKER_SWAGGER_EDITOR = constants.DOCKER_SWAGGER_EDITOR;
         this.DOCKER_PROMETHEUS = constants.DOCKER_PROMETHEUS;
         this.DOCKER_GRAFANA = constants.DOCKER_GRAFANA;
-        this.DOCKER_COMPOSE_FORMAT_VERSION =
-            constants.DOCKER_COMPOSE_FORMAT_VERSION;
+        this.DOCKER_COMPOSE_FORMAT_VERSION = constants.DOCKER_COMPOSE_FORMAT_VERSION;
 
         this.JAVA_VERSION = constants.JAVA_VERSION;
 
@@ -138,60 +131,44 @@ module.exports = class extends BaseBlueprintGenerator {
 
         this.KAFKA_VERSION = constants.KAFKA_VERSION;
 
-        this.JACKSON_DATABIND_NULLABLE_VERSION =
-            constants.JACKSON_DATABIND_NULLABLE_VERSION;
+        this.JACKSON_DATABIND_NULLABLE_VERSION = constants.JACKSON_DATABIND_NULLABLE_VERSION;
 
         this.packagejs = packagejs;
         const configuration = this.getAllJhipsterConfig(this, true);
-        this.applicationType = configuration.get('applicationType') ||
-                               this.configOptions.applicationType;
+        this.applicationType = configuration.get('applicationType') || this.configOptions.applicationType;
         if (!this.applicationType) {
           this.applicationType = 'monolith';
         }
-        this.reactive =
-            configuration.get('reactive') || this.configOptions.reactive;
+        this.reactive = configuration.get('reactive') || this.configOptions.reactive;
         this.packageName = configuration.get('packageName');
         this.serverPort = configuration.get('serverPort');
         if (this.serverPort === undefined) {
           this.serverPort = '8080';
         }
-        this.websocket = configuration.get('websocket') === 'no'
-                             ? false
-                             : configuration.get('websocket');
+        this.websocket = configuration.get('websocket') === 'no' ? false : configuration.get('websocket');
         if (this.websocket === undefined) {
           this.websocket = false;
         }
-        this.searchEngine = configuration.get('searchEngine') === 'no'
-                                ? false
-                                : configuration.get('searchEngine');
+        this.searchEngine = configuration.get('searchEngine') === 'no' ? false : configuration.get('searchEngine');
         if (this.searchEngine === undefined) {
           this.searchEngine = false;
         }
-        this.jhiPrefix =
-            this.configOptions.jhiPrefix || configuration.get('jhiPrefix');
+        this.jhiPrefix = this.configOptions.jhiPrefix || configuration.get('jhiPrefix');
         this.jhiTablePrefix = this.getTableName(this.jhiPrefix);
-        this.messageBroker = configuration.get('messageBroker') === 'no'
-                                 ? false
-                                 : configuration.get('messageBroker');
+        this.messageBroker = configuration.get('messageBroker') === 'no' ? false : configuration.get('messageBroker');
         if (this.messageBroker === undefined) {
           this.messageBroker = false;
         }
 
         this.enableSwaggerCodegen = configuration.get('enableSwaggerCodegen');
 
-        this.serviceDiscoveryType =
-            configuration.get('serviceDiscoveryType') === 'no'
-                ? false
-                : configuration.get('serviceDiscoveryType');
+        this.serviceDiscoveryType = configuration.get('serviceDiscoveryType') === 'no' ? false : configuration.get('serviceDiscoveryType');
         if (this.serviceDiscoveryType === undefined) {
           this.serviceDiscoveryType = false;
         }
 
-        this.cacheProvider = configuration.get('cacheProvider') ||
-                             configuration.get('hibernateCache') || 'no';
-        this.enableHibernateCache =
-            configuration.get('enableHibernateCache') &&
-            !['no', 'memcached'].includes(this.cacheProvider);
+        this.cacheProvider = configuration.get('cacheProvider') || configuration.get('hibernateCache') || 'no';
+        this.enableHibernateCache = configuration.get('enableHibernateCache') && !['no', 'memcached'].includes(this.cacheProvider);
 
         this.databaseType = configuration.get('databaseType');
         if (this.databaseType === 'mongodb') {
@@ -218,8 +195,7 @@ module.exports = class extends BaseBlueprintGenerator {
           this.devDatabaseType = configuration.get('devDatabaseType');
           this.prodDatabaseType = configuration.get('prodDatabaseType');
         }
-        this.skipFakeData = configuration.get('skipFakeData') ||
-                            this.configOptions.skipFakeData;
+        this.skipFakeData = configuration.get('skipFakeData') || this.configOptions.skipFakeData;
 
         this.buildTool = configuration.get('buildTool');
         this.jhipsterVersion = packagejs.version;
@@ -240,8 +216,7 @@ module.exports = class extends BaseBlueprintGenerator {
         if (uaaBaseName) {
           this.uaaBaseName = uaaBaseName;
         }
-        const embeddableLaunchScript =
-            configuration.get('embeddableLaunchScript');
+        const embeddableLaunchScript = configuration.get('embeddableLaunchScript');
         if (embeddableLaunchScript) {
           this.embeddableLaunchScript = embeddableLaunchScript;
         }
@@ -262,8 +237,7 @@ module.exports = class extends BaseBlueprintGenerator {
         }
 
         // force variables unused by microservice applications
-        if (this.applicationType === 'microservice' ||
-            this.applicationType === 'uaa') {
+        if (this.applicationType === 'microservice' || this.applicationType === 'uaa') {
           this.websocket = false;
         }
 
@@ -278,29 +252,28 @@ module.exports = class extends BaseBlueprintGenerator {
         }
 
         if (this.entitySuffix === this.dtoSuffix) {
-          this.error(
-              'Entities cannot be generated as the entity suffix and DTO suffix are equals !');
+          this.error('Entities cannot be generated as the entity suffix and DTO suffix are equals !');
         }
 
         const serverConfigFound =
-            this.packageName !== undefined &&
-            this.authenticationType !== undefined &&
-            this.cacheProvider !== undefined && this.websocket !== undefined &&
-            this.databaseType !== undefined &&
-            this.devDatabaseType !== undefined &&
-            this.prodDatabaseType !== undefined &&
-            this.searchEngine !== undefined && this.buildTool !== undefined;
+          this.packageName !== undefined &&
+          this.authenticationType !== undefined &&
+          this.cacheProvider !== undefined &&
+          this.websocket !== undefined &&
+          this.databaseType !== undefined &&
+          this.devDatabaseType !== undefined &&
+          this.prodDatabaseType !== undefined &&
+          this.searchEngine !== undefined &&
+          this.buildTool !== undefined;
 
         if (this.baseName !== undefined && serverConfigFound) {
           // Generate remember me key if key does not already exist in config
-          if (this.authenticationType === 'session' &&
-              this.rememberMeKey === undefined) {
+          if (this.authenticationType === 'session' && this.rememberMeKey === undefined) {
             this.rememberMeKey = getRandomHex();
           }
 
           // Generate JWT secret key if key does not already exist in config
-          if (this.authenticationType === 'jwt' &&
-              this.jwtSecretKey === undefined) {
+          if (this.authenticationType === 'jwt' && this.jwtSecretKey === undefined) {
             this.jwtSecretKey = getBase64Secret(null, 64);
           }
 
@@ -312,19 +285,19 @@ module.exports = class extends BaseBlueprintGenerator {
             this.nativeLanguage = 'en';
           }
           if (this.languages === undefined) {
-            this.languages = [ 'en', 'fr' ];
+            this.languages = ['en', 'fr'];
           }
           // user-management will be handled by UAA app, oauth expects users to
           // be managed in IpP
-          if ((this.applicationType === 'gateway' &&
-               this.authenticationType === 'uaa') ||
-              this.authenticationType === 'oauth2') {
+          if ((this.applicationType === 'gateway' && this.authenticationType === 'uaa') || this.authenticationType === 'oauth2') {
             this.skipUserManagement = true;
           }
 
-          this.log(chalk.green(
-              'This is an existing project, using the configuration from your .yo-rc.json file \n' +
-              'to re-generate the project...\n'));
+          this.log(
+            chalk.green(
+              'This is an existing project, using the configuration from your .yo-rc.json file \n' + 'to re-generate the project...\n'
+            )
+          );
 
           this.existingProject = true;
         }
@@ -333,18 +306,17 @@ module.exports = class extends BaseBlueprintGenerator {
   }
 
   get initializing() {
-    if (useBlueprints)
-      return;
+    if (useBlueprints) return;
     return this._initializing();
   }
 
   // Public API method used by the getter and also by Blueprints
   _prompting() {
     return {
-      askForModuleName : prompts.askForModuleName,
-      askForServerSideOpts : prompts.askForServerSideOpts,
-      askForOptionalItems : prompts.askForOptionalItems,
-      askFori18n : prompts.askFori18n,
+      askForModuleName: prompts.askForModuleName,
+      askForServerSideOpts: prompts.askForServerSideOpts,
+      askForOptionalItems: prompts.askForOptionalItems,
+      askFori18n: prompts.askFori18n,
 
       setSharedConfigOptions() {
         this.configOptions.packageName = this.packageName;
@@ -368,16 +340,13 @@ module.exports = class extends BaseBlueprintGenerator {
 
         // Make dist dir available in templates
         this.BUILD_DIR = this.getBuildDirectoryForBuildTool(this.buildTool);
-        this.CLIENT_DIST_DIR = this.getResourceBuildDirectoryForBuildTool(
-                                   this.configOptions.buildTool) +
-                               constants.CLIENT_DIST_DIR;
+        this.CLIENT_DIST_DIR = this.getResourceBuildDirectoryForBuildTool(this.configOptions.buildTool) + constants.CLIENT_DIST_DIR;
       },
     };
   }
 
   get prompting() {
-    if (useBlueprints)
-      return;
+    if (useBlueprints) return;
     return this._prompting();
   }
 
@@ -386,19 +355,19 @@ module.exports = class extends BaseBlueprintGenerator {
     return {
       insight() {
         statistics.sendSubGenEvent('generator', 'server', {
-          app : {
-            authenticationType : this.authenticationType,
-            cacheProvider : this.cacheProvider,
-            enableHibernateCache : this.enableHibernateCache,
-            websocket : this.websocket,
-            databaseType : this.databaseType,
-            devDatabaseType : this.devDatabaseType,
-            prodDatabaseType : this.prodDatabaseType,
-            searchEngine : this.searchEngine,
-            messageBroker : this.messageBroker,
-            serviceDiscoveryType : this.serviceDiscoveryType,
-            buildTool : this.buildTool,
-            enableSwaggerCodegen : this.enableSwaggerCodegen,
+          app: {
+            authenticationType: this.authenticationType,
+            cacheProvider: this.cacheProvider,
+            enableHibernateCache: this.enableHibernateCache,
+            websocket: this.websocket,
+            databaseType: this.databaseType,
+            devDatabaseType: this.devDatabaseType,
+            prodDatabaseType: this.prodDatabaseType,
+            searchEngine: this.searchEngine,
+            messageBroker: this.messageBroker,
+            serviceDiscoveryType: this.serviceDiscoveryType,
+            buildTool: this.buildTool,
+            enableSwaggerCodegen: this.enableSwaggerCodegen,
           },
         });
       },
@@ -411,11 +380,10 @@ module.exports = class extends BaseBlueprintGenerator {
         this.lowercaseBaseName = this.baseName.toLowerCase();
         this.humanizedBaseName = _.startCase(this.baseName);
         this.mainClass = this.getMainClassName();
-        this.cacheManagerIsAvailable = [
-          'ehcache', 'caffeine', 'hazelcast', 'infinispan', 'memcached', 'redis'
-        ].includes(this.cacheProvider);
-        this.testsNeedCsrf =
-            [ 'uaa', 'oauth2', 'session' ].includes(this.authenticationType);
+        this.cacheManagerIsAvailable = ['ehcache', 'caffeine', 'hazelcast', 'infinispan', 'memcached', 'redis'].includes(
+          this.cacheProvider
+        );
+        this.testsNeedCsrf = ['uaa', 'oauth2', 'session'].includes(this.authenticationType);
         this.pkType = this.getPkType(this.databaseType);
 
         this.packageFolder = this.packageName.replace(/\./g, '/');
@@ -427,29 +395,29 @@ module.exports = class extends BaseBlueprintGenerator {
 
       saveConfig() {
         const config = {
-          jhipsterVersion : packagejs.version,
-          applicationType : this.applicationType,
-          baseName : this.baseName,
-          packageName : this.packageName,
-          packageFolder : this.packageFolder,
-          serverPort : this.serverPort,
-          authenticationType : this.authenticationType,
-          uaaBaseName : this.uaaBaseName,
-          cacheProvider : this.cacheProvider,
-          enableHibernateCache : this.enableHibernateCache,
-          websocket : this.websocket,
-          databaseType : this.databaseType,
-          devDatabaseType : this.devDatabaseType,
-          prodDatabaseType : this.prodDatabaseType,
-          searchEngine : this.searchEngine,
-          messageBroker : this.messageBroker,
-          serviceDiscoveryType : this.serviceDiscoveryType,
-          buildTool : this.buildTool,
-          enableSwaggerCodegen : this.enableSwaggerCodegen,
-          jwtSecretKey : this.jwtSecretKey,
-          rememberMeKey : this.rememberMeKey,
-          enableTranslation : this.enableTranslation,
-          embeddableLaunchScript : this.embeddableLaunchScript,
+          jhipsterVersion: packagejs.version,
+          applicationType: this.applicationType,
+          baseName: this.baseName,
+          packageName: this.packageName,
+          packageFolder: this.packageFolder,
+          serverPort: this.serverPort,
+          authenticationType: this.authenticationType,
+          uaaBaseName: this.uaaBaseName,
+          cacheProvider: this.cacheProvider,
+          enableHibernateCache: this.enableHibernateCache,
+          websocket: this.websocket,
+          databaseType: this.databaseType,
+          devDatabaseType: this.devDatabaseType,
+          prodDatabaseType: this.prodDatabaseType,
+          searchEngine: this.searchEngine,
+          messageBroker: this.messageBroker,
+          serviceDiscoveryType: this.serviceDiscoveryType,
+          buildTool: this.buildTool,
+          enableSwaggerCodegen: this.enableSwaggerCodegen,
+          jwtSecretKey: this.jwtSecretKey,
+          rememberMeKey: this.rememberMeKey,
+          enableTranslation: this.enableTranslation,
+          embeddableLaunchScript: this.embeddableLaunchScript,
         };
         if (this.enableTranslation && !this.configOptions.skipI18nQuestion) {
           config.nativeLanguage = this.nativeLanguage;
@@ -461,8 +429,7 @@ module.exports = class extends BaseBlueprintGenerator {
   }
 
   get configuring() {
-    if (useBlueprints)
-      return;
+    if (useBlueprints) return;
     return this._configuring();
   }
 
@@ -497,8 +464,7 @@ module.exports = class extends BaseBlueprintGenerator {
       },
 
       composeLanguages() {
-        if (this.configOptions.skipI18nQuestion)
-          return;
+        if (this.configOptions.skipI18nQuestion) return;
 
         this.composeLanguagesSub(this, this.configOptions, 'server');
       },
@@ -506,17 +472,17 @@ module.exports = class extends BaseBlueprintGenerator {
   }
 
   get default() {
-    if (useBlueprints)
-      return;
+    if (useBlueprints) return;
     return this._default();
   }
 
   // Public API method used by the getter and also by Blueprints
-  _writing() { return writeFiles(); }
+  _writing() {
+    return writeFiles();
+  }
 
   get writing() {
-    if (useBlueprints)
-      return;
+    if (useBlueprints) return;
     return this._writing();
   }
 
@@ -526,12 +492,10 @@ module.exports = class extends BaseBlueprintGenerator {
         if (this.skipClient) {
           if (!this.options['skip-install']) {
             if (this.clientPackageManager === 'yarn') {
-              this.log(chalk.bold(`\nInstalling generator-finscale-jhipster@${
-                  this.jhipsterVersion} locally using yarn`));
+              this.log(chalk.bold(`\nInstalling generator-finscale-jhipster@${this.jhipsterVersion} locally using yarn`));
               this.yarnInstall();
             } else if (this.clientPackageManager === 'npm') {
-              this.log(chalk.bold(`\nInstalling generator-finscale-hipsters@${
-                  this.jhipsterVersion} locally using npm`));
+              this.log(chalk.bold(`\nInstalling generator-finscale-hipsters@${this.jhipsterVersion} locally using npm`));
               this.npmInstall();
             }
           }
@@ -541,8 +505,7 @@ module.exports = class extends BaseBlueprintGenerator {
   }
 
   get install() {
-    if (useBlueprints)
-      return;
+    if (useBlueprints) return;
     return this._install();
   }
 
@@ -550,8 +513,7 @@ module.exports = class extends BaseBlueprintGenerator {
   _end() {
     return {
       end() {
-        this.log(
-            chalk.green.bold('\nServer application generated successfully.\n'));
+        this.log(chalk.green.bold('\nServer application generated successfully.\n'));
 
         let executable = 'mvnw';
         if (this.buildTool === 'gradle') {
@@ -559,18 +521,15 @@ module.exports = class extends BaseBlueprintGenerator {
         }
         let logMsgComment = '';
         if (os.platform() === 'win32') {
-          logMsgComment = ` (${
-              chalk.yellow.bold(executable)} if using Windows Command Prompt)`;
+          logMsgComment = ` (${chalk.yellow.bold(executable)} if using Windows Command Prompt)`;
         }
-        this.log(chalk.green(`Run your Spring Boot application:\n${
-            chalk.yellow.bold(`./${executable}`)}${logMsgComment}`));
+        this.log(chalk.green(`Run your Spring Boot application:\n${chalk.yellow.bold(`./${executable}`)}${logMsgComment}`));
       },
     };
   }
 
   get end() {
-    if (useBlueprints)
-      return;
+    if (useBlueprints) return;
     return this._end();
   }
 };

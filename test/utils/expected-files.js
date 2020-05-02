@@ -10,8 +10,8 @@ const SERVER_TEST_RES_DIR = constants.SERVER_TEST_RES_DIR;
 const DOCKER_DIR = constants.DOCKER_DIR;
 
 const expectedFiles = {
-  entity : {
-    clientNg2 : [
+  entity: {
+    clientNg2: [
       `${CLIENT_MAIN_SRC_DIR}app/entities/foo/foo.component.html`,
       `${CLIENT_MAIN_SRC_DIR}app/entities/foo/foo-detail.component.html`,
       `${CLIENT_MAIN_SRC_DIR}app/entities/foo/foo-update.component.html`,
@@ -27,9 +27,9 @@ const expectedFiles = {
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/foo/foo-detail.component.spec.ts`,
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/foo/foo-update.component.spec.ts`,
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/foo/foo.component.spec.ts`,
-      `${CLIENT_TEST_SRC_DIR}spec/app/entities/foo/foo.service.spec.ts`
+      `${CLIENT_TEST_SRC_DIR}spec/app/entities/foo/foo.service.spec.ts`,
     ],
-    clientNg2WithSuffix : [
+    clientNg2WithSuffix: [
       `${CLIENT_MAIN_SRC_DIR}app/entities/foo-management/foo-management.component.html`,
       `${CLIENT_MAIN_SRC_DIR}app/entities/foo-management/foo-management-detail.component.html`,
       `${CLIENT_MAIN_SRC_DIR}app/entities/foo-management/foo-management-update.component.html`,
@@ -45,9 +45,9 @@ const expectedFiles = {
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/foo-management/foo-management-detail.component.spec.ts`,
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/foo-management/foo-management-update.component.spec.ts`,
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/foo-management/foo-management.component.spec.ts`,
-      `${CLIENT_TEST_SRC_DIR}spec/app/entities/foo-management/foo-management.service.spec.ts`
+      `${CLIENT_TEST_SRC_DIR}spec/app/entities/foo-management/foo-management.service.spec.ts`,
     ],
-    clientNg2WithRootFolder : [
+    clientNg2WithRootFolder: [
       `${CLIENT_MAIN_SRC_DIR}app/entities/test-root/foo/foo.component.html`,
       `${CLIENT_MAIN_SRC_DIR}app/entities/test-root/foo/foo-detail.component.html`,
       `${CLIENT_MAIN_SRC_DIR}app/entities/test-root/foo/foo-update.component.html`,
@@ -63,9 +63,9 @@ const expectedFiles = {
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/test-root/foo/foo-detail.component.spec.ts`,
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/test-root/foo/foo-update.component.spec.ts`,
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/test-root/foo/foo.component.spec.ts`,
-      `${CLIENT_TEST_SRC_DIR}spec/app/entities/test-root/foo/foo.service.spec.ts`
+      `${CLIENT_TEST_SRC_DIR}spec/app/entities/test-root/foo/foo.service.spec.ts`,
     ],
-    clientNg2WithRootFolderAndSuffix : [
+    clientNg2WithRootFolderAndSuffix: [
       `${CLIENT_MAIN_SRC_DIR}app/entities/test-root/foo-management/foo-management.component.html`,
       `${CLIENT_MAIN_SRC_DIR}app/entities/test-root/foo-management/foo-management-detail.component.html`,
       `${CLIENT_MAIN_SRC_DIR}app/entities/test-root/foo-management/foo-management-update.component.html`,
@@ -81,9 +81,9 @@ const expectedFiles = {
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/test-root/foo-management/foo-management-detail.component.spec.ts`,
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/test-root/foo-management/foo-management-update.component.spec.ts`,
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/test-root/foo-management/foo-management.component.spec.ts`,
-      `${CLIENT_TEST_SRC_DIR}spec/app/entities/test-root/foo-management/foo-management.service.spec.ts`
+      `${CLIENT_TEST_SRC_DIR}spec/app/entities/test-root/foo-management/foo-management.service.spec.ts`,
     ],
-    clientNg2GatewayMicroserviceEntity : [
+    clientNg2GatewayMicroserviceEntity: [
       `${CLIENT_MAIN_SRC_DIR}app/entities/sampleMicroservice/bar/bar.component.html`,
       `${CLIENT_MAIN_SRC_DIR}app/entities/sampleMicroservice/bar/bar-detail.component.html`,
       `${CLIENT_MAIN_SRC_DIR}app/entities/sampleMicroservice/bar/bar-update.component.html`,
@@ -99,9 +99,9 @@ const expectedFiles = {
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/sampleMicroservice/bar/bar-detail.component.spec.ts`,
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/sampleMicroservice/bar/bar-update.component.spec.ts`,
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/sampleMicroservice/bar/bar.component.spec.ts`,
-      `${CLIENT_TEST_SRC_DIR}spec/app/entities/sampleMicroservice/bar/bar.service.spec.ts`
+      `${CLIENT_TEST_SRC_DIR}spec/app/entities/sampleMicroservice/bar/bar.service.spec.ts`,
     ],
-    clientBazGatewayMicroserviceEntity : [
+    clientBazGatewayMicroserviceEntity: [
       `${CLIENT_MAIN_SRC_DIR}app/entities/sampleMicroservice/baz/baz.component.html`,
       `${CLIENT_MAIN_SRC_DIR}app/entities/sampleMicroservice/baz/baz-detail.component.html`,
       `${CLIENT_MAIN_SRC_DIR}app/entities/sampleMicroservice/baz/baz-update.component.html`,
@@ -117,42 +117,43 @@ const expectedFiles = {
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/sampleMicroservice/baz/baz-detail.component.spec.ts`,
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/sampleMicroservice/baz/baz-update.component.spec.ts`,
       `${CLIENT_TEST_SRC_DIR}spec/app/entities/sampleMicroservice/baz/baz.component.spec.ts`,
-      `${CLIENT_TEST_SRC_DIR}spec/app/entities/sampleMicroservice/baz/baz.service.spec.ts`
+      `${CLIENT_TEST_SRC_DIR}spec/app/entities/sampleMicroservice/baz/baz.service.spec.ts`,
     ],
-    server : [
+    server: [
       '.jhipster/Foo.json',
       `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/domain/Foo.java`,
       `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/repository/FooRepository.java`,
       `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/FooResource.java`,
       // SERVER_MAIN_RES_DIR +
       // 'config/liquibase/changelog/20160120213555_added_entity_Foo.xml',
-      `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/FooResourceIT.java`
+      `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/FooResourceIT.java`,
     ],
-    fakeData : [ `${SERVER_MAIN_RES_DIR}config/liquibase/fake-data/foo.csv` ],
-    serverLiquibase : [
-      `${SERVER_MAIN_RES_DIR}config/liquibase/changelog/20160120000100_added_entity_Foo.xml`
-    ],
-    gatling :
-        [ `${TEST_DIR}gatling/user-files/simulations/FooGatlingTest.scala` ]
+    fakeData: [`${SERVER_MAIN_RES_DIR}config/liquibase/fake-data/foo.csv`],
+    serverLiquibase: [`${SERVER_MAIN_RES_DIR}config/liquibase/changelog/20160120000100_added_entity_Foo.xml`],
+    gatling: [`${TEST_DIR}gatling/user-files/simulations/FooGatlingTest.scala`],
   },
 
-  gradle : [
-    'gradle.properties', 'build.gradle', 'settings.gradle', 'gradlew',
-    'gradlew.bat', 'gradle/docker.gradle', 'gradle/profile_dev.gradle',
-    'gradle/profile_prod.gradle', 'gradle/sonar.gradle',
+  gradle: [
+    'gradle.properties',
+    'build.gradle',
+    'settings.gradle',
+    'gradlew',
+    'gradlew.bat',
+    'gradle/docker.gradle',
+    'gradle/profile_dev.gradle',
+    'gradle/profile_prod.gradle',
+    'gradle/sonar.gradle',
     'gradle/wrapper/gradle-wrapper.jar',
-    'gradle/wrapper/gradle-wrapper.properties', 'checkstyle.xml'
+    'gradle/wrapper/gradle-wrapper.properties',
+    'checkstyle.xml',
   ],
 
-  maven : [
-    'pom.xml', 'mvnw', 'mvnw.cmd', '.mvn/wrapper/maven-wrapper.jar',
-    '.mvn/wrapper/maven-wrapper.properties', 'checkstyle.xml'
-  ],
+  maven: ['pom.xml', 'mvnw', 'mvnw.cmd', '.mvn/wrapper/maven-wrapper.jar', '.mvn/wrapper/maven-wrapper.properties', 'checkstyle.xml'],
 
   // common: ['.prettierignore', '.prettierrc', 'README.md', '.gitignore',
   // '.gitattributes', '.editorconfig'],
 
-  server : [
+  server: [
     `${SERVER_MAIN_RES_DIR}banner.txt`,
     `${SERVER_MAIN_RES_DIR}.h2.server.properties`,
     `${SERVER_MAIN_RES_DIR}templates/error.html`,
@@ -203,10 +204,10 @@ const expectedFiles = {
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/errors/ExceptionTranslatorIT.java`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/errors/ExceptionTranslatorTestController.java`,
     `${SERVER_TEST_RES_DIR}config/application.yml`,
-    `${SERVER_TEST_RES_DIR}logback.xml`
+    `${SERVER_TEST_RES_DIR}logback.xml`,
   ],
 
-  userManagementServer : [
+  userManagementServer: [
     `${SERVER_MAIN_RES_DIR}config/liquibase/data/authority.csv`,
     `${SERVER_MAIN_RES_DIR}config/liquibase/data/user.csv`,
     `${SERVER_MAIN_RES_DIR}config/liquibase/data/user_authority.csv`,
@@ -243,29 +244,25 @@ const expectedFiles = {
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/service/MailServiceIT.java`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/service/AuditEventServiceIT.java`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/service/mapper/UserMapperTest.java`,
-    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/repository/CustomAuditEventRepositoryIT.java`
+    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/repository/CustomAuditEventRepositoryIT.java`,
   ],
 
-  infinispan : [
-    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/CacheFactoryConfiguration.java`
-  ],
+  infinispan: [`${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/CacheFactoryConfiguration.java`],
 
-  memcached : [
+  memcached: [`${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/CacheConfiguration.java`, `${DOCKER_DIR}memcached.yml`],
+
+  redis: [
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/CacheConfiguration.java`,
-    `${DOCKER_DIR}memcached.yml`
-  ],
-
-  redis : [
-    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/CacheConfiguration.java`,
-    `${DOCKER_DIR}redis.yml`, `${DOCKER_DIR}redis-cluster.yml`,
+    `${DOCKER_DIR}redis.yml`,
+    `${DOCKER_DIR}redis-cluster.yml`,
     `${DOCKER_DIR}redis/connectRedisCluster.sh`,
     `${DOCKER_DIR}redis/Redis-Cluster.Dockerfile`,
-    `${SERVER_TEST_SRC_DIR}/com/mycompany/myapp/RedisTestContainerExtension.java`
+    `${SERVER_TEST_SRC_DIR}/com/mycompany/myapp/RedisTestContainerExtension.java`,
   ],
 
-  gatling : [ `${TEST_DIR}gatling/conf/gatling.conf` ],
+  gatling: [`${TEST_DIR}gatling/conf/gatling.conf`],
 
-  i18nJson : [
+  i18nJson: [
     `${CLIENT_MAIN_SRC_DIR}i18n/en/activate.json`,
     `${CLIENT_MAIN_SRC_DIR}i18n/en/audits.json`,
     `${CLIENT_MAIN_SRC_DIR}i18n/en/configuration.json`,
@@ -297,10 +294,10 @@ const expectedFiles = {
     `${CLIENT_MAIN_SRC_DIR}i18n/fr/sessions.json`,
     `${CLIENT_MAIN_SRC_DIR}i18n/fr/settings.json`,
     `${CLIENT_MAIN_SRC_DIR}i18n/fr/reset.json`,
-    `${CLIENT_MAIN_SRC_DIR}i18n/fr/user-management.json`
+    `${CLIENT_MAIN_SRC_DIR}i18n/fr/user-management.json`,
   ],
 
-  i18nDeJson : [
+  i18nDeJson: [
     `${CLIENT_MAIN_SRC_DIR}i18n/de/activate.json`,
     `${CLIENT_MAIN_SRC_DIR}i18n/de/audits.json`,
     `${CLIENT_MAIN_SRC_DIR}i18n/de/configuration.json`,
@@ -316,10 +313,10 @@ const expectedFiles = {
     `${CLIENT_MAIN_SRC_DIR}i18n/de/sessions.json`,
     `${CLIENT_MAIN_SRC_DIR}i18n/de/settings.json`,
     `${CLIENT_MAIN_SRC_DIR}i18n/de/reset.json`,
-    `${CLIENT_MAIN_SRC_DIR}i18n/de/user-management.json`
+    `${CLIENT_MAIN_SRC_DIR}i18n/de/user-management.json`,
   ],
 
-  userManagementClient : [
+  userManagementClient: [
     `${CLIENT_MAIN_SRC_DIR}app/account/account.module.ts`,
     `${CLIENT_MAIN_SRC_DIR}app/account/account.route.ts`,
     `${CLIENT_MAIN_SRC_DIR}app/account/activate/activate.component.html`,
@@ -370,10 +367,10 @@ const expectedFiles = {
     `${CLIENT_TEST_SRC_DIR}spec/app/admin/user-management/user-management-detail.component.spec.ts`,
     `${CLIENT_TEST_SRC_DIR}spec/app/admin/user-management/user-management-update.component.spec.ts`,
     `${CLIENT_TEST_SRC_DIR}spec/app/admin/user-management/user-management.component.spec.ts`,
-    `${CLIENT_TEST_SRC_DIR}spec/app/core/user/user.service.spec.ts`
+    `${CLIENT_TEST_SRC_DIR}spec/app/core/user/user.service.spec.ts`,
   ],
 
-  client : [
+  client: [
     'angular.json',
     '.eslintrc.json',
     '.eslintignore',
@@ -543,29 +540,29 @@ const expectedFiles = {
     'webpack/utils.js',
     'webpack/webpack.common.js',
     'webpack/webpack.dev.js',
-    'webpack/webpack.prod.js'
+    'webpack/webpack.prod.js',
   ],
 
-  i18n : [
+  i18n: [
     `${SERVER_MAIN_RES_DIR}i18n/messages_en.properties`,
     `${SERVER_MAIN_RES_DIR}i18n/messages_fr.properties`,
     `${CLIENT_MAIN_SRC_DIR}i18n/en/global.json`,
     `${CLIENT_MAIN_SRC_DIR}i18n/fr/global.json`,
     `${CLIENT_MAIN_SRC_DIR}app/core/language/language.constants.ts`,
-    `${CLIENT_MAIN_SRC_DIR}app/shared/language/find-language-from-key.pipe.ts`
+    `${CLIENT_MAIN_SRC_DIR}app/shared/language/find-language-from-key.pipe.ts`,
   ],
 
-  i18nRtl : [
+  i18nRtl: [
     `${SERVER_MAIN_RES_DIR}i18n/messages_en.properties`,
     `${SERVER_MAIN_RES_DIR}i18n/messages_ar_LY.properties`,
     `${CLIENT_MAIN_SRC_DIR}i18n/en/global.json`,
     `${CLIENT_MAIN_SRC_DIR}i18n/ar-ly/global.json`,
     `${CLIENT_MAIN_SRC_DIR}app/core/language/language.constants.ts`,
     `${CLIENT_MAIN_SRC_DIR}content/scss/rtl.scss`,
-    `${CLIENT_MAIN_SRC_DIR}app/shared/language/find-language-from-key.pipe.ts`
+    `${CLIENT_MAIN_SRC_DIR}app/shared/language/find-language-from-key.pipe.ts`,
   ],
 
-  session : [
+  session: [
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/domain/PersistentToken.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/repository/PersistentTokenRepository.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/security/PersistentTokenRememberMeServices.java`,
@@ -574,59 +571,56 @@ const expectedFiles = {
     `${CLIENT_MAIN_SRC_DIR}app/account/sessions/sessions.route.ts`,
     `${CLIENT_MAIN_SRC_DIR}app/account/sessions/sessions.service.ts`,
     `${CLIENT_MAIN_SRC_DIR}app/core/auth/auth-session.service.ts`,
-    `${CLIENT_TEST_SRC_DIR}spec/app/account/sessions/sessions.component.spec.ts`
+    `${CLIENT_TEST_SRC_DIR}spec/app/account/sessions/sessions.component.spec.ts`,
   ],
 
-  jwtServer : [
+  jwtServer: [
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/security/jwt/JWTConfigurer.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/security/jwt/JWTFilter.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/security/jwt/TokenProvider.java`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/security/jwt/JWTFilterTest.java`,
-    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/security/jwt/TokenProviderTest.java`
+    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/security/jwt/TokenProviderTest.java`,
   ],
 
-  jwtClient : [
+  jwtClient: [
     `${CLIENT_MAIN_SRC_DIR}app/blocks/interceptor/auth.interceptor.ts`,
-    `${CLIENT_MAIN_SRC_DIR}app/core/auth/auth-jwt.service.ts`
+    `${CLIENT_MAIN_SRC_DIR}app/core/auth/auth-jwt.service.ts`,
   ],
 
-  oauth2 : [
+  oauth2: [
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/SecurityConfiguration.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/security/oauth2/JwtGrantedAuthorityConverter.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/security/oauth2/AudienceValidator.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/security/oauth2/OAuthIdpTokenResponseDTO.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/domain/User.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/AccountResource.java`,
-    `${DOCKER_DIR}keycloak.yml`
+    `${DOCKER_DIR}keycloak.yml`,
   ],
 
-  oauth2Client : [ `${CLIENT_MAIN_SRC_DIR}app/core/login/logout.model.ts` ],
+  oauth2Client: [`${CLIENT_MAIN_SRC_DIR}app/core/login/logout.model.ts`],
 
-  messageBroker : [
+  messageBroker: [
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/KafkaProperties.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/JhipsterKafkaResource.java`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/JhipsterKafkaResourceIT.java`,
-    `${DOCKER_DIR}kafka.yml`
+    `${DOCKER_DIR}kafka.yml`,
   ],
 
-  swaggerCodegen : [
-    `${SERVER_MAIN_RES_DIR}swagger/api.yml`,
-    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/OpenApiConfiguration.java`
-  ],
+  swaggerCodegen: [`${SERVER_MAIN_RES_DIR}swagger/api.yml`, `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/OpenApiConfiguration.java`],
 
-  swaggerCodegenGradle : [ 'gradle/swagger.gradle' ],
+  swaggerCodegenGradle: ['gradle/swagger.gradle'],
 
-  uaa : [
+  uaa: [
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/UaaWebSecurityConfiguration.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/UaaConfiguration.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/UaaProperties.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/security/IatTokenEnhancer.java`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/config/OAuth2TestConfiguration.java`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/config/SecurityBeanOverrideConfiguration.java`,
-    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/security/OAuth2TokenMockUtil.java`
+    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/security/OAuth2TokenMockUtil.java`,
   ],
 
-  gateway : [
+  gateway: [
     `${SERVER_MAIN_RES_DIR}config/bootstrap.yml`,
     `${SERVER_MAIN_RES_DIR}config/bootstrap-prod.yml`,
     `${SERVER_TEST_RES_DIR}config/bootstrap.yml`,
@@ -641,14 +635,12 @@ const expectedFiles = {
     `${CLIENT_MAIN_SRC_DIR}app/admin/gateway/gateway.route.ts`,
     `${CLIENT_MAIN_SRC_DIR}app/admin/gateway/gateway.module.ts`,
     `${CLIENT_MAIN_SRC_DIR}app/admin/gateway/gateway.component.html`,
-    `${CLIENT_MAIN_SRC_DIR}app/admin/gateway/gateway-routes.service.ts`
+    `${CLIENT_MAIN_SRC_DIR}app/admin/gateway/gateway-routes.service.ts`,
   ],
 
-  rateLimitingFilesForGateways : [
-    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/gateway/ratelimiting/RateLimitingFilter.java`
-  ],
+  rateLimitingFilesForGateways: [`${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/gateway/ratelimiting/RateLimitingFilter.java`],
 
-  gatewayWithUaa : [
+  gatewayWithUaa: [
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/CacheConfiguration.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/AuthResource.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/filter/RefreshTokenFilter.java`,
@@ -668,92 +660,84 @@ const expectedFiles = {
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/security/oauth2/OAuth2CookieHelperTest.java`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/security/oauth2/OAuth2AuthenticationServiceTest.java`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/security/oauth2/CookieTokenExtractorTest.java`,
-    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/security/oauth2/CookieCollectionTest.java`
+    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/security/oauth2/CookieCollectionTest.java`,
   ],
 
-  feignConfig : [
+  feignConfig: [
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/FeignConfiguration.java`,
-    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/client/UserFeignClientInterceptor.java`
+    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/client/UserFeignClientInterceptor.java`,
   ],
 
-  microservice : [
+  microservice: [
     `${SERVER_MAIN_RES_DIR}static/index.html`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/SecurityConfiguration.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/FeignConfiguration.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/client/UserFeignClientInterceptor.java`,
-    'package.json'
+    'package.json',
   ],
 
-  microserviceGradle : [ 'gradle/docker.gradle' ],
+  microserviceGradle: ['gradle/docker.gradle'],
 
-  dockerServices : [ `${DOCKER_DIR}app.yml`, `${DOCKER_DIR}sonar.yml` ],
+  dockerServices: [`${DOCKER_DIR}app.yml`, `${DOCKER_DIR}sonar.yml`],
 
-  hibernateTimeZoneConfig : [
+  hibernateTimeZoneConfig: [
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/config/timezone/HibernateTimeZoneIT.java`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/repository/timezone/DateTimeWrapper.java`,
-    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/repository/timezone/DateTimeWrapperRepository.java`
+    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/repository/timezone/DateTimeWrapperRepository.java`,
   ],
 
-  mysql : [
-    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/LiquibaseConfiguration.java`,
-    `${DOCKER_DIR}mysql.yml`
-  ],
+  mysql: [`${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/LiquibaseConfiguration.java`, `${DOCKER_DIR}mysql.yml`],
 
-  mariadb : [
-    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/LiquibaseConfiguration.java`,
-    `${DOCKER_DIR}mariadb.yml`
-  ],
+  mariadb: [`${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/LiquibaseConfiguration.java`, `${DOCKER_DIR}mariadb.yml`],
 
-  mssql : [
-    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/LiquibaseConfiguration.java`,
-    `${DOCKER_DIR}mssql.yml`
-  ],
+  mssql: [`${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/LiquibaseConfiguration.java`, `${DOCKER_DIR}mssql.yml`],
 
-  postgresql : [
-    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/LiquibaseConfiguration.java`,
-    `${DOCKER_DIR}postgresql.yml`
-  ],
+  postgresql: [`${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/LiquibaseConfiguration.java`, `${DOCKER_DIR}postgresql.yml`],
 
-  liquibase : [
+  liquibase: [
     `${SERVER_MAIN_RES_DIR}config/liquibase/master.xml`,
     `${SERVER_MAIN_RES_DIR}config/liquibase/changelog/00000000000000_initial_schema.xml`,
-    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/LiquibaseConfiguration.java`
+    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/LiquibaseConfiguration.java`,
   ],
 
-  hazelcast : [ `${DOCKER_DIR}hazelcast-management-center.yml` ],
+  hazelcast: [`${DOCKER_DIR}hazelcast-management-center.yml`],
 
-  mongodb : [
+  mongodb: [
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/dbmigrations/package-info.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/config/dbmigrations/InitialSetupMigration.java`,
-    `${DOCKER_DIR}mongodb.yml`, `${DOCKER_DIR}mongodb-cluster.yml`,
+    `${DOCKER_DIR}mongodb.yml`,
+    `${DOCKER_DIR}mongodb-cluster.yml`,
     `${DOCKER_DIR}mongodb/MongoDB.Dockerfile`,
-    `${DOCKER_DIR}mongodb/scripts/init_replicaset.js`
+    `${DOCKER_DIR}mongodb/scripts/init_replicaset.js`,
   ],
 
-  couchbase :
-      [
-        `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/repository/N1qlCouchbaseRepository.java`, `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/repository/CustomN1qlCouchbaseRepository.java`, `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/config/DatabaseConfigurationIT.java`, `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0__create_indexes.n1ql`,
-        `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0.1__initial_setup/ROLE_ADMIN.json`,
-        `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0.1__initial_setup/ROLE_USER.json`,
-        `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0.1__initial_setup/user__admin.json`,
-        `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0.1__initial_setup/user__system.json`,
-        `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0.1__initial_setup/user__user.json`,
-        `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0.1__initial_setup/user__anonymoususer.json`,
-        `${DOCKER_DIR}couchbase.yml`, `${DOCKER_DIR}couchbase-cluster.yml`,
-        `${DOCKER_DIR}couchbase/Couchbase.Dockerfile`,
-        `${DOCKER_DIR}couchbase/scripts/configure-node.sh`
-      ],
+  couchbase: [
+    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/repository/N1qlCouchbaseRepository.java`,
+    `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/repository/CustomN1qlCouchbaseRepository.java`,
+    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/config/DatabaseConfigurationIT.java`,
+    `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0__create_indexes.n1ql`,
+    `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0.1__initial_setup/ROLE_ADMIN.json`,
+    `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0.1__initial_setup/ROLE_USER.json`,
+    `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0.1__initial_setup/user__admin.json`,
+    `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0.1__initial_setup/user__system.json`,
+    `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0.1__initial_setup/user__user.json`,
+    `${SERVER_MAIN_RES_DIR}config/couchmove/changelog/V0.1__initial_setup/user__anonymoususer.json`,
+    `${DOCKER_DIR}couchbase.yml`,
+    `${DOCKER_DIR}couchbase-cluster.yml`,
+    `${DOCKER_DIR}couchbase/Couchbase.Dockerfile`,
+    `${DOCKER_DIR}couchbase/scripts/configure-node.sh`,
+  ],
 
-  neo4j : [
+  neo4j: [
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/AbstractNeo4jIT.java`,
     `${SERVER_MAIN_RES_DIR}config/neo4j/migrations/user__admin.json`,
     `${SERVER_MAIN_RES_DIR}config/neo4j/migrations/user__system.json`,
     `${SERVER_MAIN_RES_DIR}config/neo4j/migrations/user__user.json`,
     `${SERVER_MAIN_RES_DIR}config/neo4j/migrations/user__anonymoususer.json`,
-    `${DOCKER_DIR}neo4j.yml`
+    `${DOCKER_DIR}neo4j.yml`,
   ],
 
-  cassandra : [
+  cassandra: [
     `${SERVER_MAIN_RES_DIR}config/cql/create-keyspace-prod.cql`,
     `${SERVER_MAIN_RES_DIR}config/cql/create-keyspace.cql`,
     `${SERVER_MAIN_RES_DIR}config/cql/drop-keyspace.cql`,
@@ -763,34 +747,33 @@ const expectedFiles = {
     `${DOCKER_DIR}cassandra/scripts/autoMigrate.sh`,
     `${DOCKER_DIR}cassandra/scripts/execute-cql.sh`,
     `${DOCKER_DIR}cassandra-cluster.yml`,
-    `${DOCKER_DIR}cassandra-migration.yml`, `${DOCKER_DIR}cassandra.yml`
+    `${DOCKER_DIR}cassandra-migration.yml`,
+    `${DOCKER_DIR}cassandra.yml`,
   ],
 
-  elasticsearch : [
+  elasticsearch: [
     `${DOCKER_DIR}elasticsearch.yml`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/config/ElasticsearchTestConfiguration.java`,
     `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/repository/search/UserSearchRepository.java`,
-    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/repository/search/UserSearchRepositoryMockConfiguration.java`
+    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/repository/search/UserSearchRepositoryMockConfiguration.java`,
   ],
 
-  cucumber : [
-    `${TEST_DIR}features/user/user.feature`, `${TEST_DIR}features/gitkeep`,
+  cucumber: [
+    `${TEST_DIR}features/user/user.feature`,
+    `${TEST_DIR}features/gitkeep`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/cucumber/CucumberContextConfiguration.java`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/cucumber/stepdefs/UserStepDefs.java`,
     `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/cucumber/stepdefs/StepDefs.java`,
-    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/cucumber/CucumberIT.java`
+    `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/cucumber/CucumberIT.java`,
   ],
 
-  eureka : [
+  eureka: [
     `${DOCKER_DIR}central-server-config/localhost-config/application.yml`,
     `${DOCKER_DIR}central-server-config/docker-config/application.yml`,
-    `${DOCKER_DIR}jhipster-registry.yml`
+    `${DOCKER_DIR}jhipster-registry.yml`,
   ],
 
-  consul : [
-    `${DOCKER_DIR}central-server-config/application.yml`,
-    `${DOCKER_DIR}consul.yml`, `${DOCKER_DIR}config/git2consul.json`
-  ]
+  consul: [`${DOCKER_DIR}central-server-config/application.yml`, `${DOCKER_DIR}consul.yml`, `${DOCKER_DIR}config/git2consul.json`],
 };
 
 module.exports = expectedFiles;

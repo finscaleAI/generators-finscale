@@ -56,9 +56,7 @@ module.exports = class extends PrivateBase {
    */
   get CLIENT_MAIN_SRC_DIR() {
     this._CLIENT_MAIN_SRC_DIR =
-        this._CLIENT_MAIN_SRC_DIR ||
-        this.applyOutputPathCustomizer(constants.CLIENT_MAIN_SRC_DIR) ||
-        constants.CLIENT_MAIN_SRC_DIR;
+      this._CLIENT_MAIN_SRC_DIR || this.applyOutputPathCustomizer(constants.CLIENT_MAIN_SRC_DIR) || constants.CLIENT_MAIN_SRC_DIR;
     return this._CLIENT_MAIN_SRC_DIR;
   }
 
@@ -67,9 +65,7 @@ module.exports = class extends PrivateBase {
    */
   get CLIENT_TEST_SRC_DIR() {
     this._CLIENT_TEST_SRC_DIR =
-        this._CLIENT_TEST_SRC_DIR ||
-        this.applyOutputPathCustomizer(constants.CLIENT_TEST_SRC_DIR) ||
-        constants.CLIENT_TEST_SRC_DIR;
+      this._CLIENT_TEST_SRC_DIR || this.applyOutputPathCustomizer(constants.CLIENT_TEST_SRC_DIR) || constants.CLIENT_TEST_SRC_DIR;
     return this._CLIENT_TEST_SRC_DIR;
   }
 
@@ -84,8 +80,9 @@ module.exports = class extends PrivateBase {
       return path;
     }
     if (Array.isArray(outputPathCustomizer)) {
-      outputPathCustomizer.forEach(
-          customizer => { path = customizer.call(this, path); });
+      outputPathCustomizer.forEach(customizer => {
+        path = customizer.call(this, path);
+      });
       return path;
     }
     return outputPathCustomizer.call(this, path);
@@ -115,11 +112,9 @@ module.exports = class extends PrivateBase {
    * @param {boolean} enableTranslation - If translations are enabled or not
    * @param {string} clientFramework - The name of the client framework
    */
-  addElementToMenu(routerName, iconName, enableTranslation, clientFramework,
-                   translationKeyMenu = _.camelCase(routerName)) {
+  addElementToMenu(routerName, iconName, enableTranslation, clientFramework, translationKeyMenu = _.camelCase(routerName)) {
     if (clientFramework === ANGULAR) {
-      this.needleApi.clientAngular.addElementToMenu(
-          routerName, iconName, enableTranslation, translationKeyMenu);
+      this.needleApi.clientAngular.addElementToMenu(routerName, iconName, enableTranslation, translationKeyMenu);
     } else if (clientFramework === REACT) {
       // React
       // TODO:
@@ -146,12 +141,9 @@ module.exports = class extends PrivateBase {
    * @param {boolean} enableTranslation - If translations are enabled or not
    * @param {string} clientFramework - The name of the client framework
    */
-  addElementToAdminMenu(routerName, iconName, enableTranslation,
-                        clientFramework,
-                        translationKeyMenu = _.camelCase(routerName)) {
+  addElementToAdminMenu(routerName, iconName, enableTranslation, clientFramework, translationKeyMenu = _.camelCase(routerName)) {
     if (clientFramework === ANGULAR) {
-      this.needleApi.clientAngular.addElementToAdminMenu(
-          routerName, iconName, enableTranslation, translationKeyMenu);
+      this.needleApi.clientAngular.addElementToAdminMenu(routerName, iconName, enableTranslation, translationKeyMenu);
     } else if (clientFramework === REACT) {
       // React
       // TODO:
@@ -168,14 +160,11 @@ module.exports = class extends PrivateBase {
    * @param {string} entityTranslationKeyMenu - i18n key for entity entry in
    *     menu
    */
-  addEntityToMenu(routerName, enableTranslation, clientFramework,
-                  entityTranslationKeyMenu = _.camelCase(routerName)) {
+  addEntityToMenu(routerName, enableTranslation, clientFramework, entityTranslationKeyMenu = _.camelCase(routerName)) {
     if (this.clientFramework === ANGULAR) {
-      this.needleApi.clientAngular.addEntityToMenu(
-          routerName, enableTranslation, entityTranslationKeyMenu);
+      this.needleApi.clientAngular.addEntityToMenu(routerName, enableTranslation, entityTranslationKeyMenu);
     } else if (this.clientFramework === REACT) {
-      this.needleApi.clientReact.addEntityToMenu(routerName, enableTranslation,
-                                                 entityTranslationKeyMenu);
+      this.needleApi.clientReact.addEntityToMenu(routerName, enableTranslation, entityTranslationKeyMenu);
     }
   }
 
@@ -191,17 +180,28 @@ module.exports = class extends PrivateBase {
    * @param {string} clientFramework - The name of the client framework
    * @param {string} microServiceName - Microservice Name
    */
-  addEntityToModule(entityInstance, entityClass, entityName, entityFolderName,
-                    entityFileName, entityUrl, clientFramework,
-                    microServiceName) {
+  addEntityToModule(
+    entityInstance,
+    entityClass,
+    entityName,
+    entityFolderName,
+    entityFileName,
+    entityUrl,
+    clientFramework,
+    microServiceName
+  ) {
     if (clientFramework === ANGULAR) {
       this.needleApi.clientAngular.addEntityToModule(
-          entityInstance, entityClass, entityName, entityFolderName,
-          entityFileName, entityUrl, microServiceName);
+        entityInstance,
+        entityClass,
+        entityName,
+        entityFolderName,
+        entityFileName,
+        entityUrl,
+        microServiceName
+      );
     } else if (clientFramework === REACT) {
-      this.needleApi.clientReact.addEntityToModule(entityInstance, entityClass,
-                                                   entityName, entityFolderName,
-                                                   entityFileName);
+      this.needleApi.clientReact.addEntityToModule(entityInstance, entityClass, entityName, entityFolderName, entityFileName);
     }
   }
 
@@ -215,11 +215,15 @@ module.exports = class extends PrivateBase {
    * @param {boolean} enableTranslation - If translations are enabled or not.
    * @param {string} clientFramework - The name of the client framework.
    */
-  addAdminToModule(appName, adminAngularName, adminFolderName, adminFileName,
-                   enableTranslation, clientFramework) {
+  addAdminToModule(appName, adminAngularName, adminFolderName, adminFileName, enableTranslation, clientFramework) {
     this.needleApi.clientAngular.addToAdminModule(
-        appName, adminAngularName, adminFolderName, adminFileName,
-        enableTranslation, clientFramework);
+      appName,
+      adminAngularName,
+      adminFolderName,
+      adminFileName,
+      enableTranslation,
+      clientFramework
+    );
   }
 
   /**
@@ -257,8 +261,7 @@ module.exports = class extends PrivateBase {
    *     added
    */
   addAdminElementTranslationKey(key, value, language) {
-    this.needleApi.clientI18n.addAdminElementTranslationKey(key, value,
-                                                            language);
+    this.needleApi.clientI18n.addAdminElementTranslationKey(key, value, language);
   }
 
   /**
@@ -285,13 +288,19 @@ module.exports = class extends PrivateBase {
   addGlobalTranslationKey(key, value, language) {
     const fullPath = `${this.CLIENT_MAIN_SRC_DIR}i18n/${language}/global.json`;
     try {
-      jhipsterUtils.rewriteJSONFile(fullPath,
-                                    jsonObj => { jsonObj[key] = value; }, this);
+      jhipsterUtils.rewriteJSONFile(
+        fullPath,
+        jsonObj => {
+          jsonObj[key] = value;
+        },
+        this
+      );
     } catch (e) {
-      this.log(`${
-          chalk.yellow('\nUnable to find ') + fullPath +
-          chalk.yellow('. Reference to ')}(key: ${key}, value:${value})${
-          chalk.yellow(' not added to global translations.\n')}`);
+      this.log(
+        `${chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow('. Reference to ')}(key: ${key}, value:${value})${chalk.yellow(
+          ' not added to global translations.\n'
+        )}`
+      );
       this.debug('Error:', e);
     }
   }
@@ -307,8 +316,9 @@ module.exports = class extends PrivateBase {
    */
   addTranslationKeyToAllLanguages(key, value, method, enableTranslation) {
     if (enableTranslation) {
-      this.getAllInstalledLanguages().forEach(
-          language => { this[method](key, value, language); });
+      this.getAllInstalledLanguages().forEach(language => {
+        this[method](key, value, language);
+      });
     }
   }
 
@@ -319,8 +329,7 @@ module.exports = class extends PrivateBase {
     const languages = [];
     this.getAllSupportedLanguages().forEach(language => {
       try {
-        const stats =
-            fs.lstatSync(`${this.CLIENT_MAIN_SRC_DIR}i18n/${language}`);
+        const stats = fs.lstatSync(`${this.CLIENT_MAIN_SRC_DIR}i18n/${language}`);
         if (stats.isDirectory()) {
           languages.push(language);
         }
@@ -356,10 +365,8 @@ module.exports = class extends PrivateBase {
     if (!languages) {
       return false;
     }
-    const rtlLanguages =
-        this.getAllSupportedLanguageOptions().filter(langObj => langObj.rtl);
-    return languages.some(
-        lang => !!rtlLanguages.find(langObj => langObj.value === lang));
+    const rtlLanguages = this.getAllSupportedLanguageOptions().filter(langObj => langObj.rtl);
+    return languages.some(lang => !!rtlLanguages.find(langObj => langObj.value === lang));
   }
 
   /**
@@ -369,8 +376,7 @@ module.exports = class extends PrivateBase {
    * @param {string} language - language key
    */
   getLocaleId(language) {
-    const langObj = this.getAllSupportedLanguageOptions().find(
-        langObj => langObj.value === language);
+    const langObj = this.getAllSupportedLanguageOptions().find(langObj => langObj.value === language);
     return langObj.localeId || language;
   }
 
@@ -381,15 +387,16 @@ module.exports = class extends PrivateBase {
    * @param {string} language - language key
    */
   getMomentLocaleId(language) {
-    const langObj = this.getAllSupportedLanguageOptions().find(
-        langObj => langObj.value === language);
+    const langObj = this.getAllSupportedLanguageOptions().find(langObj => langObj.value === language);
     return langObj.momentLocaleId || language;
   }
 
   /**
    * get all the languages options supported by JHipster
    */
-  getAllSupportedLanguageOptions() { return constants.LANGUAGES; }
+  getAllSupportedLanguageOptions() {
+    return constants.LANGUAGES;
+  }
 
   /**
    * Add a new dependency in the "package.json".
@@ -400,17 +407,22 @@ module.exports = class extends PrivateBase {
   addNpmDependency(name, version) {
     const fullPath = 'package.json';
     try {
-      jhipsterUtils.rewriteJSONFile(fullPath, jsonObj => {
-        if (jsonObj.dependencies === undefined) {
-          jsonObj.dependencies = {};
-        }
-        jsonObj.dependencies[name] = version;
-      }, this);
+      jhipsterUtils.rewriteJSONFile(
+        fullPath,
+        jsonObj => {
+          if (jsonObj.dependencies === undefined) {
+            jsonObj.dependencies = {};
+          }
+          jsonObj.dependencies[name] = version;
+        },
+        this
+      );
     } catch (e) {
-      this.log(`${
-          chalk.yellow('\nUnable to find ') + fullPath +
-          chalk.yellow('. Reference to ')}npm dependency (name: ${
-          name}, version:${version})${chalk.yellow(' not added.\n')}`);
+      this.log(
+        `${
+          chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow('. Reference to ')
+        }npm dependency (name: ${name}, version:${version})${chalk.yellow(' not added.\n')}`
+      );
       this.debug('Error:', e);
     }
   }
@@ -424,17 +436,22 @@ module.exports = class extends PrivateBase {
   addNpmDevDependency(name, version) {
     const fullPath = 'package.json';
     try {
-      jhipsterUtils.rewriteJSONFile(fullPath, jsonObj => {
-        if (jsonObj.devDependencies === undefined) {
-          jsonObj.devDependencies = {};
-        }
-        jsonObj.devDependencies[name] = version;
-      }, this);
+      jhipsterUtils.rewriteJSONFile(
+        fullPath,
+        jsonObj => {
+          if (jsonObj.devDependencies === undefined) {
+            jsonObj.devDependencies = {};
+          }
+          jsonObj.devDependencies[name] = version;
+        },
+        this
+      );
     } catch (e) {
-      this.log(`${
-          chalk.yellow('\nUnable to find ') + fullPath +
-          chalk.yellow('. Reference to ')}npm devDependency (name: ${
-          name}, version:${version})${chalk.yellow(' not added.\n')}`);
+      this.log(
+        `${
+          chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow('. Reference to ')
+        }npm devDependency (name: ${name}, version:${version})${chalk.yellow(' not added.\n')}`
+      );
       this.debug('Error:', e);
     }
   }
@@ -448,17 +465,22 @@ module.exports = class extends PrivateBase {
   addNpmScript(name, data) {
     const fullPath = 'package.json';
     try {
-      jhipsterUtils.rewriteJSONFile(fullPath, jsonObj => {
-        if (jsonObj.scripts === undefined) {
-          jsonObj.scripts = {};
-        }
-        jsonObj.scripts[name] = data;
-      }, this);
+      jhipsterUtils.rewriteJSONFile(
+        fullPath,
+        jsonObj => {
+          if (jsonObj.scripts === undefined) {
+            jsonObj.scripts = {};
+          }
+          jsonObj.scripts[name] = data;
+        },
+        this
+      );
     } catch (e) {
-      this.log(`${
-          chalk.yellow('\nUnable to find ') + fullPath +
-          chalk.yellow('. Reference to ')}npm script (name: ${name}, data:${
-          data})${chalk.yellow(' not added.\n')}`);
+      this.log(
+        `${
+          chalk.yellow('\nUnable to find ') + fullPath + chalk.yellow('. Reference to ')
+        }npm script (name: ${name}, data:${data})${chalk.yellow(' not added.\n')}`
+      );
       this.debug('Error:', e);
     }
   }
@@ -473,11 +495,8 @@ module.exports = class extends PrivateBase {
    * @param {boolean} enableTranslation - If translations are enabled or not.
    * @param {string} clientFramework - The name of the client framework.
    */
-  addAngularModule(appName, angularName, folderName, fileName,
-                   enableTranslation, clientFramework) {
-    this.needleApi.clientAngular.addModule(appName, angularName, folderName,
-                                           fileName, enableTranslation,
-                                           clientFramework);
+  addAngularModule(appName, angularName, folderName, fileName, enableTranslation, clientFramework) {
+    this.needleApi.clientAngular.addModule(appName, angularName, folderName, fileName, enableTranslation, clientFramework);
   }
 
   /**
@@ -490,8 +509,7 @@ module.exports = class extends PrivateBase {
    * @param {string} packageFolder - the Java package folder
    */
   addEntityToEhcache(entityClass, relationships, packageName, packageFolder) {
-    this.addEntityToCache(entityClass, relationships, packageName,
-                          packageFolder, 'ehcache');
+    this.addEntityToCache(entityClass, relationships, packageName, packageFolder, 'ehcache');
   }
 
   /**
@@ -514,10 +532,8 @@ module.exports = class extends PrivateBase {
    * @param {string} packageFolder - the Java package folder
    * @param {string} cacheProvider - the cache provider
    */
-  addEntityToCache(entityClass, relationships, packageName, packageFolder,
-                   cacheProvider) {
-    this.needleApi.serverCache.addEntityToCache(
-        entityClass, relationships, packageName, packageFolder, cacheProvider);
+  addEntityToCache(entityClass, relationships, packageName, packageFolder, cacheProvider) {
+    this.needleApi.serverCache.addEntityToCache(entityClass, relationships, packageName, packageFolder, cacheProvider);
   }
 
   /**
@@ -528,8 +544,7 @@ module.exports = class extends PrivateBase {
    * @param {string} cacheProvider - the cache provider
    */
   addEntryToCache(entry, packageFolder, cacheProvider) {
-    this.needleApi.serverCache.addEntryToCache(entry, packageFolder,
-                                               cacheProvider);
+    this.needleApi.serverCache.addEntryToCache(entry, packageFolder, cacheProvider);
   }
 
   /**
@@ -571,8 +586,7 @@ module.exports = class extends PrivateBase {
    *     multiple columns as well
    */
   addColumnToLiquibaseEntityChangeset(filePath, content) {
-    this.needleApi.serverLiquibase.addColumnToEntityChangeset(filePath,
-                                                              content);
+    this.needleApi.serverLiquibase.addColumnToEntityChangeset(filePath, content);
   }
 
   /**
@@ -583,8 +597,7 @@ module.exports = class extends PrivateBase {
    *     multiple columns as well
    */
   addLoadColumnToLiquibaseEntityChangeSet(filePath, content) {
-    this.needleApi.serverLiquibase.addLoadColumnToEntityChangeSet(filePath,
-                                                                  content);
+    this.needleApi.serverLiquibase.addLoadColumnToEntityChangeSet(filePath, content);
   }
 
   /**
@@ -594,8 +607,7 @@ module.exports = class extends PrivateBase {
    * @param {string} content - The content to be added as changeset
    */
   addChangesetToLiquibaseEntityChangelog(filePath, content) {
-    this.needleApi.serverLiquibase.addChangesetToEntityChangelog(filePath,
-                                                                 content);
+    this.needleApi.serverLiquibase.addChangesetToEntityChangelog(filePath, content);
   }
 
   /**
@@ -687,10 +699,8 @@ module.exports = class extends PrivateBase {
    * @param {string} scope - (optional) explicit scope
    * @param {string} other - (optional) explicit other thing:  exclusions...
    */
-  addMavenDependencyManagement(groupId, artifactId, version, type, scope,
-                               other) {
-    this.needleApi.serverMaven.addDependencyManagement(
-        groupId, artifactId, version, type, scope, other);
+  addMavenDependencyManagement(groupId, artifactId, version, type, scope, other) {
+    this.needleApi.serverMaven.addDependencyManagement(groupId, artifactId, version, type, scope, other);
   }
 
   /**
@@ -723,10 +733,8 @@ module.exports = class extends PrivateBase {
    * @param {string} releasesId Repository Id
    * @param {string} releasesUrl Repository Url
    */
-  addMavenDistributionManagement(snapshotsId, snapshotsUrl, releasesId,
-                                 releasesUrl) {
-    this.needleApi.serverMaven.addDistributionManagement(
-        snapshotsId, snapshotsUrl, releasesId, releasesUrl);
+  addMavenDistributionManagement(snapshotsId, snapshotsUrl, releasesId, releasesUrl) {
+    this.needleApi.serverMaven.addDistributionManagement(snapshotsId, snapshotsUrl, releasesId, releasesUrl);
   }
 
   /**
@@ -749,8 +757,7 @@ module.exports = class extends PrivateBase {
    *     exclusions...
    */
   addMavenDependency(groupId, artifactId, version, other) {
-    this.addMavenDependencyInDirectory('.', groupId, artifactId, version,
-                                       other);
+    this.addMavenDependencyInDirectory('.', groupId, artifactId, version, other);
   }
 
   /**
@@ -763,10 +770,8 @@ module.exports = class extends PrivateBase {
    * @param {string} other - (optional) explicit other thing: scope,
    *     exclusions...
    */
-  addMavenDependencyInDirectory(directory, groupId, artifactId, version,
-                                other) {
-    this.needleApi.serverMaven.addDependencyInDirectory(
-        directory, groupId, artifactId, version, other);
+  addMavenDependencyInDirectory(directory, groupId, artifactId, version, other) {
+    this.needleApi.serverMaven.addDependencyInDirectory(directory, groupId, artifactId, version, other);
   }
 
   /**
@@ -790,8 +795,7 @@ module.exports = class extends PrivateBase {
    * @param {string} other - explicit other thing: executions, configuration...
    */
   addMavenPluginManagement(groupId, artifactId, version, other) {
-    this.needleApi.serverMaven.addPluginManagement(groupId, artifactId, version,
-                                                   other);
+    this.needleApi.serverMaven.addPluginManagement(groupId, artifactId, version, other);
   }
 
   /**
@@ -802,8 +806,7 @@ module.exports = class extends PrivateBase {
    * @param {string} version - explicit plugin version number
    */
   addMavenAnnotationProcessor(groupId, artifactId, version) {
-    this.needleApi.serverMaven.addAnnotationProcessor(groupId, artifactId,
-                                                      version);
+    this.needleApi.serverMaven.addAnnotationProcessor(groupId, artifactId, version);
   }
 
   /**
@@ -869,8 +872,7 @@ module.exports = class extends PrivateBase {
    * @param {string} version - (optional) explicit dependency version number
    */
   addGradleDependencyInDirectory(directory, scope, group, name, version) {
-    this.needleApi.serverGradle.addDependencyInDirectory(directory, scope,
-                                                         group, name, version);
+    this.needleApi.serverGradle.addDependencyInDirectory(directory, scope, group, name, version);
   }
 
   /**
@@ -919,17 +921,21 @@ module.exports = class extends PrivateBase {
         now = this.configOptions.lastLiquibaseTimestamp;
       } else {
         // Create a new counter
-        const creationTimestamp = this.parseCreationTimestamp() ||
-                                  this.config.get('creationTimestamp');
+        const creationTimestamp = this.parseCreationTimestamp() || this.config.get('creationTimestamp');
         now = creationTimestamp ? new Date(creationTimestamp) : now;
       }
       now.setMinutes(now.getMinutes() + 1);
       this.configOptions.lastLiquibaseTimestamp = now;
     }
 
-    const nowUTC =
-        new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
-                 now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+    const nowUTC = new Date(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate(),
+      now.getUTCHours(),
+      now.getUTCMinutes(),
+      now.getUTCSeconds()
+    );
     const year = `${nowUTC.getFullYear()}`;
     let month = `${nowUTC.getMonth() + 1}`;
     if (month.length === 1) {
@@ -971,54 +977,57 @@ module.exports = class extends PrivateBase {
     const _this = generator || this;
     let regex;
     switch (action) {
-    case 'stripHtml':
-      regex = new RegExp(
+      case 'stripHtml':
+        regex = new RegExp(
           [
             /([\s\n\r]+(data-t|jhiT)ranslate="([a-zA-Z0-9 +{}'_](\.)?)+")/, // data-translate or jhiTranslate
             /([\s\n\r]+\[translate(-v|V)alues\]="\{([a-zA-Z]|\d|:|\{|\}|\[|\]|-|'|\s|\.|_)*?\}")/, // translate-values or translateValues
-            /([\s\n\r]+translate-compile)/,                 // translate-compile
+            /([\s\n\r]+translate-compile)/, // translate-compile
             /([\s\n\r]+translate-value-max="[0-9{}()|]*")/, // translate-value-max
-          ].map(r => r.source)
-              .join('|'),
-          'g');
+          ]
+            .map(r => r.source)
+            .join('|'),
+          'g'
+        );
 
-      jhipsterUtils.copyWebResource(source, dest, regex, 'html', _this, opt,
-                                    template);
-      break;
-    case 'stripJs':
-      regex = new RegExp(
+        jhipsterUtils.copyWebResource(source, dest, regex, 'html', _this, opt, template);
+        break;
+      case 'stripJs':
+        regex = new RegExp(
           [
             /(,[\s]*(resolve):[\s]*[{][\s]*(translatePartialLoader)['a-zA-Z0-9$,(){.<%=\->;\s:[\]]*(;[\s]*\}\][\s]*\}))/, // ng1 resolve block
             /([\s]import\s\{\s?JhiLanguageService\s?\}\sfrom\s["|']ng-jhipster["|'];)/, // ng2 import jhiLanguageService
             /(,?\s?JhiLanguageService,?\s?)/, // ng2 import jhiLanguageService
             /(private\s[a-zA-Z0-9]*(L|l)anguageService\s?:\s?JhiLanguageService\s?,*[\s]*)/, // ng2 jhiLanguageService constructor argument
-          ].map(r => r.source)
-              .join('|'),
-          'g');
+          ]
+            .map(r => r.source)
+            .join('|'),
+          'g'
+        );
 
-      jhipsterUtils.copyWebResource(source, dest, regex, 'js', _this, opt,
-                                    template);
-      break;
-    case 'stripJsx':
-      regex = new RegExp(
+        jhipsterUtils.copyWebResource(source, dest, regex, 'js', _this, opt, template);
+        break;
+      case 'stripJsx':
+        regex = new RegExp(
           [
             /(import { ?Translate, ?translate ?} from 'react-jhipster';?)/, // Translate imports
             /(import { ?translate, ?Translate ?} from 'react-jhipster';?)/, // translate imports
             /( Translate,|, ?Translate|import { ?Translate ?} from 'react-jhipster';?)/, // Translate import
             /( translate,|, ?translate|import { ?translate ?} from 'react-jhipster';?)/, // translate import
             /<Translate(\s*)?((component="[a-z]+")(\s*)|(contentKey=("[a-zA-Z0-9.\-_]+"|\{.*\}))(\s*)|(interpolate=\{.*\})(\s*))*(\s*)\/?>|<\/Translate>/, // Translate component tag
-          ].map(r => r.source)
-              .join('|'),
-          'g');
+          ]
+            .map(r => r.source)
+            .join('|'),
+          'g'
+        );
 
-      jhipsterUtils.copyWebResource(source, dest, regex, 'jsx', _this, opt,
-                                    template);
-      break;
-    case 'copy':
-      _this.copy(source, dest);
-      break;
-    default:
-      _this.template(source, dest, _this, opt);
+        jhipsterUtils.copyWebResource(source, dest, regex, 'jsx', _this, opt, template);
+        break;
+      case 'copy':
+        _this.copy(source, dest);
+        break;
+      default:
+        _this.template(source, dest, _this, opt);
     }
   }
 
@@ -1076,8 +1085,7 @@ module.exports = class extends PrivateBase {
    * @returns {boolean} true if the body has changed.
    */
   rewriteFile(filePath, needle, content) {
-    const rewriteFileModel =
-        this.needleApi.base.generateFileModel(filePath, needle, content);
+    const rewriteFileModel = this.needleApi.base.generateFileModel(filePath, needle, content);
     return this.needleApi.base.addBlockContentToFile(rewriteFileModel);
   }
 
@@ -1093,13 +1101,9 @@ module.exports = class extends PrivateBase {
    */
   replaceContent(filePath, pattern, content, regex) {
     try {
-      return jhipsterUtils.replaceContent(
-          {file : filePath, pattern, content, regex}, this);
+      return jhipsterUtils.replaceContent({ file: filePath, pattern, content, regex }, this);
     } catch (e) {
-      this.log(
-          chalk.yellow('\nUnable to find ') + filePath +
-          chalk.yellow(' or missing required pattern. File rewrite failed.\n') +
-          e);
+      this.log(chalk.yellow('\nUnable to find ') + filePath + chalk.yellow(' or missing required pattern. File rewrite failed.\n') + e);
       this.debug('Error:', e);
       return false;
     }
@@ -1118,23 +1122,18 @@ module.exports = class extends PrivateBase {
    *     app
    * @param {string} description[optional] - description of the generator
    */
-  registerModule(npmPackageName, hookFor, hookType, callbackSubGenerator,
-                 description) {
+  registerModule(npmPackageName, hookFor, hookType, callbackSubGenerator, description) {
     try {
       let modules;
       let error;
       let duplicate;
-      const moduleName =
-          _.startCase(npmPackageName.replace(`${GENERATOR_JHIPSTER}-`, ''));
-      const generatorName =
-          jhipsterUtils.packageNameToNamespace(npmPackageName);
-      const generatorCallback =
-          `${generatorName}:${callbackSubGenerator || 'app'}`;
+      const moduleName = _.startCase(npmPackageName.replace(`${GENERATOR_JHIPSTER}-`, ''));
+      const generatorName = jhipsterUtils.packageNameToNamespace(npmPackageName);
+      const generatorCallback = `${generatorName}:${callbackSubGenerator || 'app'}`;
       const moduleConfig = {
-        name : `${moduleName} generator`,
+        name: `${moduleName} generator`,
         npmPackageName,
-        description :
-            description || `A JHipster module to generate ${moduleName}`,
+        description: description || `A JHipster module to generate ${moduleName}`,
         hookFor,
         hookType,
         generatorCallback,
@@ -1145,8 +1144,7 @@ module.exports = class extends PrivateBase {
         duplicate = _.findIndex(modules, moduleConfig) !== -1;
       } catch (err) {
         error = true;
-        this.log(chalk.red(
-            'The JHipster module configuration file could not be read!'));
+        this.log(chalk.red('The JHipster module configuration file could not be read!'));
         this.debug('Error:', err);
       }
       if (!error && !duplicate) {
@@ -1154,8 +1152,7 @@ module.exports = class extends PrivateBase {
         this.fs.writeJSON(MODULES_HOOK_FILE, modules, null, 4);
       }
     } catch (err) {
-      this.log(
-          `\n${chalk.bold.red('Could not add jhipster module configuration')}`);
+      this.log(`\n${chalk.bold.red('Could not add jhipster module configuration')}`);
       this.debug('Error:', err);
     }
   }
@@ -1173,10 +1170,7 @@ module.exports = class extends PrivateBase {
       entityJson[key] = value;
       this.fs.writeJSON(file, entityJson, null, 4);
     } catch (err) {
-      this.log(
-          chalk.red(
-              'The JHipster entity configuration file could not be read!') +
-          err);
+      this.log(chalk.red('The JHipster entity configuration file could not be read!') + err);
       this.debug('Error:', err);
     }
   }
@@ -1213,14 +1207,14 @@ module.exports = class extends PrivateBase {
         // compose with the modules callback generator
         const hook = module.generatorCallback.split(':')[1];
         try {
-          this.composeExternalModule(module.npmPackageName, hook || 'app',
-                                     options);
+          this.composeExternalModule(module.npmPackageName, hook || 'app', options);
         } catch (e) {
           this.log(
-              chalk.red('Could not compose module ') +
+            chalk.red('Could not compose module ') +
               chalk.bold.yellow(module.npmPackageName) +
               chalk.red('. \nMake sure you have installed the module with ') +
-              chalk.bold.yellow(`'npm install -g ${module.npmPackageName}'`));
+              chalk.bold.yellow(`'npm install -g ${module.npmPackageName}'`)
+          );
           this.debug('ERROR:', e);
         }
       }
@@ -1247,8 +1241,7 @@ module.exports = class extends PrivateBase {
    * @param {string} microserviceName
    */
   getMicroserviceAppName(microserviceName) {
-    return _.camelCase(microserviceName) +
-           (microserviceName.endsWith('App') ? '' : 'App');
+    return _.camelCase(microserviceName) + (microserviceName.endsWith('App') ? '' : 'App');
   }
 
   /**
@@ -1279,56 +1272,43 @@ module.exports = class extends PrivateBase {
     context.fluentMethods = context.fileData.fluentMethods;
     context.clientRootFolder = context.fileData.clientRootFolder;
     context.pagination = context.fileData.pagination;
-    context.searchEngine = _.isUndefined(context.fileData.searchEngine)
-                               ? context.searchEngine
-                               : context.fileData.searchEngine;
+    context.searchEngine = _.isUndefined(context.fileData.searchEngine) ? context.searchEngine : context.fileData.searchEngine;
     context.javadoc = context.fileData.javadoc;
     context.entityTableName = context.fileData.entityTableName;
     context.jhiPrefix = context.fileData.jhiPrefix || context.jhiPrefix;
-    context.skipCheckLengthOfIdentifier =
-        context.fileData.skipCheckLengthOfIdentifier ||
-        context.skipCheckLengthOfIdentifier;
+    context.skipCheckLengthOfIdentifier = context.fileData.skipCheckLengthOfIdentifier || context.skipCheckLengthOfIdentifier;
     context.jhiTablePrefix = this.getTableName(context.jhiPrefix);
     context.skipClient = context.fileData.skipClient || context.skipClient;
     context.readOnly = context.fileData.readOnly || false;
     context.embedded = context.fileData.embedded || false;
     this.copyFilteringFlag(context.fileData, context, context);
     if (_.isUndefined(context.entityTableName)) {
-      this.warning(`entityTableName is missing in .jhipster/${
-          context.name}.json, using entity name as fallback`);
+      this.warning(`entityTableName is missing in .jhipster/${context.name}.json, using entity name as fallback`);
       context.entityTableName = this.getTableName(context.name);
     }
-    if (jhiCore.isReservedTableName(context.entityTableName,
-                                    context.prodDatabaseType) &&
-        context.jhiPrefix) {
-      context.entityTableName =
-          `${context.jhiTablePrefix}_${context.entityTableName}`;
+    if (jhiCore.isReservedTableName(context.entityTableName, context.prodDatabaseType) && context.jhiPrefix) {
+      context.entityTableName = `${context.jhiTablePrefix}_${context.entityTableName}`;
     }
     context.fields.forEach(field => {
       context.fieldNamesUnderscored.push(_.snakeCase(field.fieldName));
-      context.fieldNameChoices.push(
-          {name : field.fieldName, value : field.fieldName});
+      context.fieldNameChoices.push({ name: field.fieldName, value: field.fieldName });
     });
     context.relationships.forEach(rel => {
       context.relNameChoices.push({
-        name : `${rel.relationshipName}:${rel.relationshipType}`,
-        value : `${rel.relationshipName}:${rel.relationshipType}`,
+        name: `${rel.relationshipName}:${rel.relationshipType}`,
+        value: `${rel.relationshipName}:${rel.relationshipType}`,
       });
     });
     if (context.fileData.angularJSSuffix !== undefined) {
       context.entityAngularJSSuffix = context.fileData.angularJSSuffix;
     }
-    context.useMicroserviceJson =
-        context.useMicroserviceJson ||
-        !_.isUndefined(context.fileData.microserviceName);
+    context.useMicroserviceJson = context.useMicroserviceJson || !_.isUndefined(context.fileData.microserviceName);
     if (context.applicationType === 'gateway' && context.useMicroserviceJson) {
       context.microserviceName = context.fileData.microserviceName;
       if (!context.microserviceName) {
-        this.error(
-            'Microservice name for the entity is not found. Entity cannot be generated!');
+        this.error('Microservice name for the entity is not found. Entity cannot be generated!');
       }
-      context.microserviceAppName =
-          this.getMicroserviceAppName(context.microserviceName);
+      context.microserviceAppName = this.getMicroserviceAppName(context.microserviceName);
       context.skipServer = true;
     }
   }
@@ -1342,19 +1322,12 @@ module.exports = class extends PrivateBase {
 
     try {
       if (this.context.microservicePath) {
-        entityJson = this.fs.readJSON(path.join(this.context.microservicePath,
-                                                JHIPSTER_CONFIG_DIR,
-                                                `${_.upperFirst(file)}.json`));
+        entityJson = this.fs.readJSON(path.join(this.context.microservicePath, JHIPSTER_CONFIG_DIR, `${_.upperFirst(file)}.json`));
       } else {
-        entityJson = this.fs.readJSON(
-            path.join(JHIPSTER_CONFIG_DIR, `${_.upperFirst(file)}.json`));
+        entityJson = this.fs.readJSON(path.join(JHIPSTER_CONFIG_DIR, `${_.upperFirst(file)}.json`));
       }
     } catch (err) {
-      this.log(
-          chalk.red(
-              `The JHipster entity configuration file could not be read for file ${
-                  file}!`) +
-          err);
+      this.log(chalk.red(`The JHipster entity configuration file could not be read for file ${file}!`) + err);
       this.debug('Error:', err);
     }
 
@@ -1376,21 +1349,20 @@ module.exports = class extends PrivateBase {
       return entities;
     }
 
-    return shelljs.ls(path.join(JHIPSTER_CONFIG_DIR, '*.json'))
-        .reduce(
-            (acc, file) => {
-              try {
-                const definition = jhiCore.readEntityJSON(file);
-                acc.push({name : path.basename(file, '.json'), definition});
-              } catch (error) {
-                // not an entity file / malformed?
-                this.warning(`Unable to parse entity file ${file}`);
-                this.debug('Error:', error);
-              }
-              return acc;
-            },
-            entities)
-        .sort(isBefore);
+    return shelljs
+      .ls(path.join(JHIPSTER_CONFIG_DIR, '*.json'))
+      .reduce((acc, file) => {
+        try {
+          const definition = jhiCore.readEntityJSON(file);
+          acc.push({ name: path.basename(file, '.json'), definition });
+        } catch (error) {
+          // not an entity file / malformed?
+          this.warning(`Unable to parse entity file ${file}`);
+          this.debug('Error:', error);
+        }
+        return acc;
+      }, entities)
+      .sort(isBefore);
   }
 
   /**
@@ -1405,8 +1377,7 @@ module.exports = class extends PrivateBase {
   copyI18nFilesByName(generator, webappDir, fileToCopy, lang) {
     const _this = generator || this;
     const prefix = this.fetchFromInstalledJHipster('languages/templates');
-    _this.copy(`${prefix}/${webappDir}i18n/${lang}/${fileToCopy}`,
-               `${webappDir}i18n/${lang}/${fileToCopy}`);
+    _this.copy(`${prefix}/${webappDir}i18n/${lang}/${fileToCopy}`, `${webappDir}i18n/${lang}/${fileToCopy}`);
   }
 
   /**
@@ -1445,21 +1416,27 @@ module.exports = class extends PrivateBase {
    *
    * @param {string} value - table name string
    */
-  getTableName(value) { return this.hibernateSnakeCase(value); }
+  getTableName(value) {
+    return this.hibernateSnakeCase(value);
+  }
 
   /**
    * get a table column name in JHipster preferred style.
    *
    * @param {string} value - table column name string
    */
-  getColumnName(value) { return this.hibernateSnakeCase(value); }
+  getColumnName(value) {
+    return this.hibernateSnakeCase(value);
+  }
 
   /**
    * get a table column names plural form in JHipster preferred style.
    *
    * @param {string} value - table column name string
    */
-  getPluralColumnName(value) { return this.getColumnName(pluralize(value)); }
+  getPluralColumnName(value) {
+    return this.getColumnName(pluralize(value));
+  }
 
   /**
    * get a table name for joined tables in JHipster preferred style.
@@ -1469,40 +1446,37 @@ module.exports = class extends PrivateBase {
    * @param {string} prodDatabaseType - database type
    */
   getJoinTableName(entityName, relationshipName, prodDatabaseType) {
-    const joinTableName = `${this.getTableName(entityName)}_${
-        this.getTableName(relationshipName)}`;
+    const joinTableName = `${this.getTableName(entityName)}_${this.getTableName(relationshipName)}`;
     let limit = 0;
-    if (prodDatabaseType === 'oracle' && joinTableName.length > 30 &&
-        !this.skipCheckLengthOfIdentifier) {
-      this.warning(`The generated join table "${
-          joinTableName}" is too long for Oracle (which has a 30 character limit). It will be truncated!`);
+    if (prodDatabaseType === 'oracle' && joinTableName.length > 30 && !this.skipCheckLengthOfIdentifier) {
+      this.warning(
+        `The generated join table "${joinTableName}" is too long for Oracle (which has a 30 character limit). It will be truncated!`
+      );
 
       limit = 30;
-    } else if (prodDatabaseType === 'mysql' && joinTableName.length > 64 &&
-               !this.skipCheckLengthOfIdentifier) {
-      this.warning(`The generated join table "${
-          joinTableName}" is too long for MySQL (which has a 64 character limit). It will be truncated!`);
+    } else if (prodDatabaseType === 'mysql' && joinTableName.length > 64 && !this.skipCheckLengthOfIdentifier) {
+      this.warning(
+        `The generated join table "${joinTableName}" is too long for MySQL (which has a 64 character limit). It will be truncated!`
+      );
 
       limit = 64;
-    } else if (prodDatabaseType === 'postgresql' &&
-               joinTableName.length >= 63 &&
-               !this.skipCheckLengthOfIdentifier) {
-      this.warning(`The generated join table "${
-          joinTableName}" is too long for PostgreSQL (which has a 63 character limit). It will be truncated!`);
+    } else if (prodDatabaseType === 'postgresql' && joinTableName.length >= 63 && !this.skipCheckLengthOfIdentifier) {
+      this.warning(
+        `The generated join table "${joinTableName}" is too long for PostgreSQL (which has a 63 character limit). It will be truncated!`
+      );
 
       limit = 63;
-    } else if (prodDatabaseType === 'mariadb' && joinTableName.length > 64 &&
-               !this.skipCheckLengthOfIdentifier) {
-      this.warning(`The generated join table "${
-          joinTableName}" is too long for MariaDB (which has a 64 character limit). It will be truncated!`);
+    } else if (prodDatabaseType === 'mariadb' && joinTableName.length > 64 && !this.skipCheckLengthOfIdentifier) {
+      this.warning(
+        `The generated join table "${joinTableName}" is too long for MariaDB (which has a 64 character limit). It will be truncated!`
+      );
 
       limit = 64;
     }
     if (limit > 0) {
       const halfLimit = Math.floor(limit / 2);
       const entityTable = this.getTableName(entityName).substring(0, halfLimit);
-      const relationTable = this.getTableName(relationshipName)
-                                .substring(0, limit - entityTable.length - 1);
+      const relationTable = this.getTableName(relationshipName).substring(0, limit - entityTable.length - 1);
       return `${entityTable}_${relationTable}`;
     }
     return joinTableName;
@@ -1519,54 +1493,45 @@ module.exports = class extends PrivateBase {
    * @param {string} constraintNamePrefix - constraintName prefix for the
    *     constraintName
    */
-  getConstraintNameWithLimit(entityName, columnOrRelationName, prodDatabaseType,
-                             noSnakeCase, constraintNamePrefix = '') {
+  getConstraintNameWithLimit(entityName, columnOrRelationName, prodDatabaseType, noSnakeCase, constraintNamePrefix = '') {
     let constraintName;
     if (noSnakeCase) {
-      constraintName =
-          `${constraintNamePrefix}${entityName}_${columnOrRelationName}`;
+      constraintName = `${constraintNamePrefix}${entityName}_${columnOrRelationName}`;
     } else {
-      constraintName =
-          `${constraintNamePrefix}${this.getTableName(entityName)}_${
-              this.getTableName(columnOrRelationName)}`;
+      constraintName = `${constraintNamePrefix}${this.getTableName(entityName)}_${this.getTableName(columnOrRelationName)}`;
     }
     let limit = 0;
-    if (prodDatabaseType === 'oracle' && constraintName.length >= 27 &&
-        !this.skipCheckLengthOfIdentifier) {
-      this.warning(`The generated constraint name "${
-          constraintName}" is too long for Oracle (which has a 30 character limit). It will be truncated!`);
+    if (prodDatabaseType === 'oracle' && constraintName.length >= 27 && !this.skipCheckLengthOfIdentifier) {
+      this.warning(
+        `The generated constraint name "${constraintName}" is too long for Oracle (which has a 30 character limit). It will be truncated!`
+      );
 
       limit = 28;
-    } else if (prodDatabaseType === 'mysql' && constraintName.length >= 61 &&
-               !this.skipCheckLengthOfIdentifier) {
-      this.warning(`The generated constraint name "${
-          constraintName}" is too long for MySQL (which has a 64 character limit). It will be truncated!`);
+    } else if (prodDatabaseType === 'mysql' && constraintName.length >= 61 && !this.skipCheckLengthOfIdentifier) {
+      this.warning(
+        `The generated constraint name "${constraintName}" is too long for MySQL (which has a 64 character limit). It will be truncated!`
+      );
 
       limit = 62;
-    } else if (prodDatabaseType === 'postgresql' &&
-               constraintName.length >= 60 &&
-               !this.skipCheckLengthOfIdentifier) {
-      this.warning(`The generated constraint name "${
-          constraintName}" is too long for PostgreSQL (which has a 63 character limit). It will be truncated!`);
+    } else if (prodDatabaseType === 'postgresql' && constraintName.length >= 60 && !this.skipCheckLengthOfIdentifier) {
+      this.warning(
+        `The generated constraint name "${constraintName}" is too long for PostgreSQL (which has a 63 character limit). It will be truncated!`
+      );
 
       limit = 61;
-    } else if (prodDatabaseType === 'mariadb' && constraintName.length >= 61 &&
-               !this.skipCheckLengthOfIdentifier) {
-      this.warning(`The generated constraint name "${
-          constraintName}" is too long for MariaDB (which has a 64 character limit). It will be truncated!`);
+    } else if (prodDatabaseType === 'mariadb' && constraintName.length >= 61 && !this.skipCheckLengthOfIdentifier) {
+      this.warning(
+        `The generated constraint name "${constraintName}" is too long for MariaDB (which has a 64 character limit). It will be truncated!`
+      );
 
       limit = 62;
     }
     if (limit > 0) {
       const halfLimit = Math.floor(limit / 2);
-      const entityTable =
-          noSnakeCase ? entityName.substring(0, halfLimit)
-                      : this.getTableName(entityName).substring(0, halfLimit);
-      const otherTable =
-          noSnakeCase ? columnOrRelationName.substring(
-                            0, limit - entityTable.length - 2)
-                      : this.getTableName(columnOrRelationName)
-                            .substring(0, limit - entityTable.length - 2);
+      const entityTable = noSnakeCase ? entityName.substring(0, halfLimit) : this.getTableName(entityName).substring(0, halfLimit);
+      const otherTable = noSnakeCase
+        ? columnOrRelationName.substring(0, limit - entityTable.length - 2)
+        : this.getTableName(columnOrRelationName).substring(0, limit - entityTable.length - 2);
       return `${entityTable}_${otherTable}`;
     }
     return constraintName;
@@ -1580,11 +1545,9 @@ module.exports = class extends PrivateBase {
    * @param {string} prodDatabaseType - database type
    * @param {boolean} noSnakeCase - do not convert names to snakecase
    */
-  getConstraintName(entityName, relationshipName, prodDatabaseType,
-                    noSnakeCase) {
+  getConstraintName(entityName, relationshipName, prodDatabaseType, noSnakeCase) {
     // for backward compatibility
-    return this.getFKConstraintName(entityName, relationshipName,
-                                    prodDatabaseType, noSnakeCase);
+    return this.getFKConstraintName(entityName, relationshipName, prodDatabaseType, noSnakeCase);
   }
 
   /**
@@ -1595,12 +1558,8 @@ module.exports = class extends PrivateBase {
    * @param {string} prodDatabaseType - database type
    * @param {boolean} noSnakeCase - do not convert names to snakecase
    */
-  getFKConstraintName(entityName, relationshipName, prodDatabaseType,
-                      noSnakeCase) {
-    return `${
-        this.getConstraintNameWithLimit(entityName, relationshipName,
-                                        prodDatabaseType, noSnakeCase,
-                                        'fk_')}_id`;
+  getFKConstraintName(entityName, relationshipName, prodDatabaseType, noSnakeCase) {
+    return `${this.getConstraintNameWithLimit(entityName, relationshipName, prodDatabaseType, noSnakeCase, 'fk_')}_id`;
   }
 
   /**
@@ -1612,9 +1571,7 @@ module.exports = class extends PrivateBase {
    * @param {boolean} noSnakeCase - do not convert names to snakecase
    */
   getUXConstraintName(entityName, columnName, prodDatabaseType, noSnakeCase) {
-    return `ux_${
-        this.getConstraintNameWithLimit(entityName, columnName,
-                                        prodDatabaseType, noSnakeCase)}`;
+    return `ux_${this.getConstraintNameWithLimit(entityName, columnName, prodDatabaseType, noSnakeCase)}`;
   }
 
   /**
@@ -1660,7 +1617,9 @@ module.exports = class extends PrivateBase {
    *
    * @param {string} msg - message to print
    */
-  success(msg) { this.log.ok(msg); }
+  success(msg) {
+    this.log.ok(msg);
+  }
 
   /**
    * Generate a KeyStore for uaa authorization server.
@@ -1669,19 +1628,16 @@ module.exports = class extends PrivateBase {
     const done = this.async();
     const keyStoreFile = `${SERVER_MAIN_RES_DIR}config/tls/keystore.p12`;
     if (this.fs.exists(keyStoreFile)) {
-      this.log(chalk.cyan(
-          `\nKeyStore '${keyStoreFile}' already exists. Leaving unchanged.\n`));
+      this.log(chalk.cyan(`\nKeyStore '${keyStoreFile}' already exists. Leaving unchanged.\n`));
       done();
     } else {
       try {
         shelljs.mkdir('-p', `${SERVER_MAIN_RES_DIR}config/tls`);
       } catch (error) {
         // noticed that on windows the shelljs.mkdir tends to sometimes fail
-        fs.mkdir(`${SERVER_MAIN_RES_DIR}config/tls`, {recursive : true},
-                 err => {
-                   if (err)
-                     throw err;
-                 });
+        fs.mkdir(`${SERVER_MAIN_RES_DIR}config/tls`, { recursive: true }, err => {
+          if (err) throw err;
+        });
       }
       const javaHome = shelljs.env.JAVA_HOME;
       let keytoolPath = '';
@@ -1690,8 +1646,8 @@ module.exports = class extends PrivateBase {
       }
       // Generate the PKCS#12 keystore
       shelljs.exec(
-          // prettier-ignore
-          `"${keytoolPath}keytool" -genkey -noprompt ` +
+        // prettier-ignore
+        `"${keytoolPath}keytool" -genkey -noprompt ` +
               '-storetype PKCS12 ' +
               '-keyalg RSA ' +
               '-alias selfsigned ' +
@@ -1702,16 +1658,15 @@ module.exports = class extends PrivateBase {
               '-validity 99999 ' +
               `-dname "CN=Java Hipster, OU=Development, O=${
                   this.packageName}, L=, ST=, C="`,
-          code => {
-            if (code !== 0) {
-              this.warning("\nFailed to create a KeyStore with 'keytool'",
-                           code);
-            } else {
-              this.log(chalk.green(
-                  `\nKeyStore '${keyStoreFile}' generated successfully.\n`));
-            }
-            done();
-          });
+        code => {
+          if (code !== 0) {
+            this.warning("\nFailed to create a KeyStore with 'keytool'", code);
+          } else {
+            this.log(chalk.green(`\nKeyStore '${keyStoreFile}' generated successfully.\n`));
+          }
+          done();
+        }
+      );
     }
   }
 
@@ -1721,30 +1676,30 @@ module.exports = class extends PrivateBase {
   printJHipsterLogo() {
     this.log('\n');
     this.log(chalk.green('Finscale Hipsters'));
-    this.log(chalk.white.bold(
-        '                            https://www.finscale-hipsters.com\n'));
-    this.log(chalk.white('Welcome to Finscale Hipsters ') +
-             chalk.yellow(`v${packagejs.version}`));
-    this.log(chalk.white(`Application files will be generated in folder: ${
-        chalk.yellow(process.cwd())}`));
+    this.log(chalk.white.bold('                            https://www.finscale-hipsters.com\n'));
+    this.log(chalk.white('Welcome to Finscale Hipsters ') + chalk.yellow(`v${packagejs.version}`));
+    this.log(chalk.white(`Application files will be generated in folder: ${chalk.yellow(process.cwd())}`));
     if (process.cwd() === this.getUserHome()) {
-      this.log(chalk.red.bold(
-          '\n️⚠️  WARNING ⚠️  You are in your HOME folder!'));
-      this.log(chalk.red(
-          'This can cause problems, you should always create a new directory and run the jhipster command from here.'));
-      this.log(chalk.white(`See the troubleshooting section at ${
-          chalk.yellow('https://www.jhipster.tech/installation/')}`));
+      this.log(chalk.red.bold('\n️⚠️  WARNING ⚠️  You are in your HOME folder!'));
+      this.log(chalk.red('This can cause problems, you should always create a new directory and run the jhipster command from here.'));
+      this.log(chalk.white(`See the troubleshooting section at ${chalk.yellow('https://www.jhipster.tech/installation/')}`));
     }
-    this.log(chalk.green(
-        ' _______________________________________________________________________________________________________________\n'));
-    this.log(chalk.white(`  Documentation for creating an application is at ${
-        chalk.yellow('https://www.fincale-hipsters.com/creating-an-app/')}`));
-    this.log(chalk.white(
-        `  If you find Finscale Hipsters useful, consider sponsoring the project at ${
-            chalk.yellow(
-                'https://opencollective.com/generator-finscale-hipsters')}`));
-    this.log(chalk.green(
-        ' _______________________________________________________________________________________________________________\n'));
+    this.log(
+      chalk.green(' _______________________________________________________________________________________________________________\n')
+    );
+    this.log(
+      chalk.white(`  Documentation for creating an application is at ${chalk.yellow('https://www.fincale-hipsters.com/creating-an-app/')}`)
+    );
+    this.log(
+      chalk.white(
+        `  If you find Finscale Hipsters useful, consider sponsoring the project at ${chalk.yellow(
+          'https://opencollective.com/generator-finscale-hipsters'
+        )}`
+      )
+    );
+    this.log(
+      chalk.green(' _______________________________________________________________________________________________________________\n')
+    );
   }
 
   /**
@@ -1765,30 +1720,28 @@ module.exports = class extends PrivateBase {
     try {
       const done = this.async();
       shelljs.exec(
-          `npm show ${
-              GENERATOR_JHIPSTER} version --fetch-retries 1 --fetch-retry-mintimeout 500 --fetch-retry-maxtimeout 500`,
-          {silent : true}, (code, stdout, stderr) => {
-            if (!stderr && semver.lt(packagejs.version, stdout)) {
-              this.log(`${
-                  chalk.yellow(
-                      ' ______________________________________________________________________________\n\n') +
-                  chalk.yellow('  JHipster update available: ') +
-                  chalk.green.bold(stdout.replace('\n', '')) +
-                  chalk.gray(` (current: ${packagejs.version})`)}\n`);
-              if (this.useNpm) {
-                this.log(chalk.yellow(`  Run ${
-                    chalk.magenta(`npm install -g ${
-                        GENERATOR_JHIPSTER}`)} to update.\n`));
-              } else {
-                this.log(chalk.yellow(`  Run ${
-                    chalk.magenta(`yarn global upgrade ${
-                        GENERATOR_JHIPSTER}`)} to update.\n`));
-              }
-              this.log(chalk.yellow(
-                  ' ______________________________________________________________________________\n'));
+        `npm show ${GENERATOR_JHIPSTER} version --fetch-retries 1 --fetch-retry-mintimeout 500 --fetch-retry-maxtimeout 500`,
+        { silent: true },
+        (code, stdout, stderr) => {
+          if (!stderr && semver.lt(packagejs.version, stdout)) {
+            this.log(
+              `${
+                chalk.yellow(' ______________________________________________________________________________\n\n') +
+                chalk.yellow('  JHipster update available: ') +
+                chalk.green.bold(stdout.replace('\n', '')) +
+                chalk.gray(` (current: ${packagejs.version})`)
+              }\n`
+            );
+            if (this.useNpm) {
+              this.log(chalk.yellow(`  Run ${chalk.magenta(`npm install -g ${GENERATOR_JHIPSTER}`)} to update.\n`));
+            } else {
+              this.log(chalk.yellow(`  Run ${chalk.magenta(`yarn global upgrade ${GENERATOR_JHIPSTER}`)} to update.\n`));
             }
-            done();
-          });
+            this.log(chalk.yellow(' ______________________________________________________________________________\n'));
+          }
+          done();
+        }
+      );
     } catch (err) {
       this.debug('Error:', err);
       // fail silently as this function doesn't affect normal generator flow
@@ -1800,8 +1753,7 @@ module.exports = class extends PrivateBase {
    * @param {string} baseName of application
    */
   getAngularAppName(baseName = this.baseName) {
-    const name =
-        _.camelCase(baseName) + (baseName.endsWith('App') ? '' : 'App');
+    const name = _.camelCase(baseName) + (baseName.endsWith('App') ? '' : 'App');
     return name.match(/^\d/) ? 'App' : name;
   }
 
@@ -1818,7 +1770,9 @@ module.exports = class extends PrivateBase {
    * get the an upperFirst camelCase value.
    * @param {string} value string to convert
    */
-  upperFirstCamelCase(value) { return _.upperFirst(_.camelCase(value)); }
+  upperFirstCamelCase(value) {
+    return _.upperFirst(_.camelCase(value));
+  }
 
   /**
    * get the java main class name.
@@ -1839,16 +1793,16 @@ module.exports = class extends PrivateBase {
     const hash = jhipsterUtils.stringHashCode(baseName);
 
     switch (hash % 4) {
-    case 0:
-      return 'jhipster_family_member_0';
-    case 1:
-      return 'jhipster_family_member_1';
-    case 2:
-      return 'jhipster_family_member_2';
-    case 3:
-      return 'jhipster_family_member_3';
-    default:
-      return 'jhipster_family_member_0';
+      case 0:
+        return 'jhipster_family_member_0';
+      case 1:
+        return 'jhipster_family_member_1';
+      case 2:
+        return 'jhipster_family_member_2';
+      case 3:
+        return 'jhipster_family_member_3';
+      default:
+        return 'jhipster_family_member_0';
     }
   }
 
@@ -1861,33 +1815,31 @@ module.exports = class extends PrivateBase {
     const done = generator.async();
     const defaultAppBaseName = this.getDefaultAppName();
     generator
-        .prompt({
-          type : 'input',
-          name : 'baseName',
-          validate : input => {
-            if (!/^([a-zA-Z0-9_]*)$/.test(input)) {
-              return 'Your base name cannot contain special characters or a blank space';
-            }
-            if ((generator.applicationType === 'microservice' ||
-                 generator.applicationType === 'uaa') &&
-                /_/.test(input)) {
-              return 'Your base name cannot contain underscores as this does not meet the URI spec';
-            }
-            if (generator.applicationType === 'uaa' && input === 'auth') {
-              return "Your UAA base name cannot be named 'auth' as it conflicts with the gateway login routes";
-            }
-            if (input === 'application') {
-              return "Your base name cannot be named 'application' as this is a reserved name for Spring Boot";
-            }
-            return true;
-          },
-          message : 'What is the base name of your application?',
-          default : defaultAppBaseName,
-        })
-        .then(prompt => {
-          generator.baseName = prompt.baseName;
-          done();
-        });
+      .prompt({
+        type: 'input',
+        name: 'baseName',
+        validate: input => {
+          if (!/^([a-zA-Z0-9_]*)$/.test(input)) {
+            return 'Your base name cannot contain special characters or a blank space';
+          }
+          if ((generator.applicationType === 'microservice' || generator.applicationType === 'uaa') && /_/.test(input)) {
+            return 'Your base name cannot contain underscores as this does not meet the URI spec';
+          }
+          if (generator.applicationType === 'uaa' && input === 'auth') {
+            return "Your UAA base name cannot be named 'auth' as it conflicts with the gateway login routes";
+          }
+          if (input === 'application') {
+            return "Your base name cannot be named 'application' as this is a reserved name for Spring Boot";
+          }
+          return true;
+        },
+        message: 'What is the base name of your application?',
+        default: defaultAppBaseName,
+      })
+      .then(prompt => {
+        generator.baseName = prompt.baseName;
+        done();
+      });
   }
 
   /**
@@ -1901,34 +1853,33 @@ module.exports = class extends PrivateBase {
     const done = generator.async();
     const prompts = [
       {
-        type : 'confirm',
-        name : 'enableTranslation',
-        message : 'Would you like to enable internationalization support?',
-        default : false,
+        type: 'confirm',
+        name: 'enableTranslation',
+        message: 'Would you like to enable internationalization support?',
+        default: false,
       },
       {
-        when : response => response.enableTranslation === true,
-        type : 'list',
-        name : 'nativeLanguage',
-        message : 'Please choose the native language of the application',
-        choices : languageOptions,
-        default : 'en',
-        store : true,
+        when: response => response.enableTranslation === true,
+        type: 'list',
+        name: 'nativeLanguage',
+        message: 'Please choose the native language of the application',
+        choices: languageOptions,
+        default: 'en',
+        store: true,
       },
       {
-        when : response => response.enableTranslation === true,
-        type : 'checkbox',
-        name : 'languages',
-        message : 'Please choose additional languages to install',
-        choices : response =>
-            _.filter(languageOptions, o => o.value !== response.nativeLanguage),
+        when: response => response.enableTranslation === true,
+        type: 'checkbox',
+        name: 'languages',
+        message: 'Please choose additional languages to install',
+        choices: response => _.filter(languageOptions, o => o.value !== response.nativeLanguage),
       },
     ];
 
     generator.prompt(prompts).then(prompt => {
       generator.enableTranslation = prompt.enableTranslation;
       generator.nativeLanguage = prompt.nativeLanguage;
-      generator.languages = [ prompt.nativeLanguage ].concat(prompt.languages);
+      generator.languages = [prompt.nativeLanguage].concat(prompt.languages);
       done();
     });
   }
@@ -1948,14 +1899,14 @@ module.exports = class extends PrivateBase {
       const skipClient = type && type === 'server';
       generator.composeWith(require.resolve('./languages'), {
         configOptions,
-        'skip-install' : true,
-        'skip-server' : skipServer,
-        'skip-client' : skipClient,
-        'from-cli' : generator.options['from-cli'],
-        skipChecks : generator.options.skipChecks,
-        languages : generator.languages,
-        force : generator.options.force,
-        debug : generator.options.debug,
+        'skip-install': true,
+        'skip-server': skipServer,
+        'skip-client': skipClient,
+        'from-cli': generator.options['from-cli'],
+        skipChecks: generator.options.skipChecks,
+        languages: generator.languages,
+        force: generator.options.force,
+        debug: generator.options.debug,
       });
     }
   }
@@ -1989,7 +1940,7 @@ module.exports = class extends PrivateBase {
     }
     buildCmd += ` -P${profile}`;
     return {
-      stdout : exec(buildCmd, {maxBuffer : 1024 * 10000}, cb).stdout,
+      stdout: exec(buildCmd, { maxBuffer: 1024 * 10000 }, cb).stdout,
       buildCmd,
     };
   }
@@ -2016,7 +1967,7 @@ module.exports = class extends PrivateBase {
     buildCmd += ` -P${profile}`;
     this.log(`Running command: '${chalk.bold(buildCmd)}'`);
     return {
-      stdout : exec(buildCmd, {maxBuffer : 1024 * 10000}, cb).stdout,
+      stdout: exec(buildCmd, { maxBuffer: 1024 * 10000 }, cb).stdout,
       buildCmd,
     };
   }
@@ -2036,8 +1987,7 @@ module.exports = class extends PrivateBase {
     const startTime = new Date();
     // using the fastest method for iterations
     for (let i = 0, blocks = Object.keys(files); i < blocks.length; i++) {
-      for (let j = 0, blockTemplates = files[blocks[i]];
-           j < blockTemplates.length; j++) {
+      for (let j = 0, blockTemplates = files[blocks[i]]; j < blockTemplates.length; j++) {
         const blockTemplate = blockTemplates[j];
         if (!blockTemplate.condition || blockTemplate.condition(_this)) {
           const path = blockTemplate.path || '';
@@ -2056,8 +2006,7 @@ module.exports = class extends PrivateBase {
                 templatePath += templateObj.file(_this);
               }
               method = templateObj.method ? templateObj.method : method;
-              useTemplate =
-                  templateObj.template ? templateObj.template : useTemplate;
+              useTemplate = templateObj.template ? templateObj.template : useTemplate;
               options = templateObj.options ? templateObj.options : options;
             }
             if (templateObj && templateObj.renameTo) {
@@ -2068,18 +2017,19 @@ module.exports = class extends PrivateBase {
             }
             filesOut.push(templatePathTo);
             if (!returnFiles) {
-              let templatePathFrom =
-                  prefix ? `${prefix}/${templatePath}` : templatePath;
-              if (!templateObj.noEjs && !templatePathFrom.endsWith('.png') &&
-                  !templatePathFrom.endsWith('.jpg') &&
-                  !templatePathFrom.endsWith('.gif') &&
-                  !templatePathFrom.endsWith('.svg') &&
-                  !templatePathFrom.endsWith('.ico')) {
+              let templatePathFrom = prefix ? `${prefix}/${templatePath}` : templatePath;
+              if (
+                !templateObj.noEjs &&
+                !templatePathFrom.endsWith('.png') &&
+                !templatePathFrom.endsWith('.jpg') &&
+                !templatePathFrom.endsWith('.gif') &&
+                !templatePathFrom.endsWith('.svg') &&
+                !templatePathFrom.endsWith('.ico')
+              ) {
                 templatePathFrom = `${templatePathFrom}.ejs`;
               }
               // if (method === 'template')
-              _this[method](templatePathFrom, templatePathTo, _this, options,
-                            useTemplate);
+              _this[method](templatePathFrom, templatePathTo, _this, options, useTemplate);
             }
           });
         }
@@ -2103,31 +2053,21 @@ module.exports = class extends PrivateBase {
    * @param {any} dest - destination context to use default is context
    */
   setupSharedOptions(generator, context = generator, dest = context) {
-    dest.skipClient = context.options['client-hook'] === false ||
-                      context.configOptions.skipClient ||
-                      context.config.get('skipClient');
-    dest.skipServer =
-        context.configOptions.skipServer || context.config.get('skipServer');
-    dest.skipUserManagement = context.configOptions.skipUserManagement ||
-                              context.options['skip-user-management'] ||
-                              context.config.get('skipUserManagement');
+    dest.skipClient = context.options['client-hook'] === false || context.configOptions.skipClient || context.config.get('skipClient');
+    dest.skipServer = context.configOptions.skipServer || context.config.get('skipServer');
+    dest.skipUserManagement =
+      context.configOptions.skipUserManagement || context.options['skip-user-management'] || context.config.get('skipUserManagement');
     dest.otherModules = context.configOptions.otherModules || [];
     dest.baseName = context.configOptions.baseName;
     dest.logo = context.configOptions.logo;
     dest.clientPackageManager = context.configOptions.clientPackageManager;
-    dest.isDebugEnabled =
-        context.configOptions.isDebugEnabled || context.options.debug;
-    dest.experimental =
-        context.configOptions.experimental || context.options.experimental;
-    dest.embeddableLaunchScript =
-        context.configOptions.embeddableLaunchScript || false;
+    dest.isDebugEnabled = context.configOptions.isDebugEnabled || context.options.debug;
+    dest.experimental = context.configOptions.experimental || context.options.experimental;
+    dest.embeddableLaunchScript = context.configOptions.embeddableLaunchScript || false;
 
-    const uaaBaseName = context.configOptions.uaaBaseName ||
-                        context.options['uaa-base-name'] ||
-                        context.config.get('uaaBaseName');
+    const uaaBaseName = context.configOptions.uaaBaseName || context.options['uaa-base-name'] || context.config.get('uaaBaseName');
     if (dest.authenticationType === 'uaa' && _.isNil(uaaBaseName)) {
-      generator.error(
-          'when using --auth uaa, a UAA basename must be provided with --uaa-base-name');
+      generator.error('when using --auth uaa, a UAA basename must be provided with --uaa-base-name');
     }
     dest.uaaBaseName = uaaBaseName;
   }
@@ -2143,35 +2083,23 @@ module.exports = class extends PrivateBase {
    */
   setupClientOptions(generator, context = generator, dest = context) {
     this.setupSharedOptions(generator, context, dest);
-    dest.skipCommitHook = context.options['skip-commit-hook'] ||
-                          context.config.get('skipCommitHook');
-    dest.authenticationType = context.options.auth ||
-                              context.configOptions.authenticationType ||
-                              context.config.get('authenticationType');
-    dest.serviceDiscoveryType = context.configOptions.serviceDiscoveryType ||
-                                context.config.get('serviceDiscoveryType');
+    dest.skipCommitHook = context.options['skip-commit-hook'] || context.config.get('skipCommitHook');
+    dest.authenticationType = context.options.auth || context.configOptions.authenticationType || context.config.get('authenticationType');
+    dest.serviceDiscoveryType = context.configOptions.serviceDiscoveryType || context.config.get('serviceDiscoveryType');
 
     dest.buildTool = context.configOptions.buildTool;
     dest.websocket = context.configOptions.websocket;
-    dest.devDatabaseType = context.configOptions.devDatabaseType ||
-                           context.config.get('devDatabaseType');
-    dest.prodDatabaseType = context.configOptions.prodDatabaseType ||
-                            context.config.get('prodDatabaseType');
-    dest.databaseType = generator.getDBTypeFromDBValue(dest.prodDatabaseType) ||
-                        context.configOptions.databaseType ||
-                        context.config.get('databaseType');
-    if (dest.authenticationType === 'oauth2' ||
-        (dest.databaseType === 'no' && dest.authenticationType !== 'uaa')) {
+    dest.devDatabaseType = context.configOptions.devDatabaseType || context.config.get('devDatabaseType');
+    dest.prodDatabaseType = context.configOptions.prodDatabaseType || context.config.get('prodDatabaseType');
+    dest.databaseType =
+      generator.getDBTypeFromDBValue(dest.prodDatabaseType) || context.configOptions.databaseType || context.config.get('databaseType');
+    if (dest.authenticationType === 'oauth2' || (dest.databaseType === 'no' && dest.authenticationType !== 'uaa')) {
       dest.skipUserManagement = true;
     }
     dest.searchEngine = context.config.get('searchEngine');
-    dest.cacheProvider = context.config.get('cacheProvider') ||
-                         context.config.get('hibernateCache') || 'no';
-    dest.enableHibernateCache =
-        context.config.get('enableHibernateCache') &&
-        !['no', 'memcached'].includes(dest.cacheProvider);
-    dest.jhiPrefix =
-        context.configOptions.jhiPrefix || context.config.get('jhiPrefix');
+    dest.cacheProvider = context.config.get('cacheProvider') || context.config.get('hibernateCache') || 'no';
+    dest.enableHibernateCache = context.config.get('enableHibernateCache') && !['no', 'memcached'].includes(dest.cacheProvider);
+    dest.jhiPrefix = context.configOptions.jhiPrefix || context.config.get('jhiPrefix');
     dest.jhiPrefixCapitalized = _.upperFirst(generator.jhiPrefix);
     dest.jhiPrefixDashed = _.kebabCase(generator.jhiPrefix);
     dest.testFrameworks = context.configOptions.testFrameworks || [];
@@ -2190,8 +2118,7 @@ module.exports = class extends PrivateBase {
    */
   setupServerOptions(generator, context = generator, dest = context) {
     this.setupSharedOptions(generator, context, dest);
-    dest.enableTranslation = context.configOptions.enableTranslation ||
-                             context.config.get('enableTranslation');
+    dest.enableTranslation = context.configOptions.enableTranslation || context.config.get('enableTranslation');
     dest.testFrameworks = context.configOptions.testFrameworks;
   }
 
@@ -2213,20 +2140,15 @@ module.exports = class extends PrivateBase {
 
     dest.regenerate = context.options.regenerate;
     dest.fluentMethods = context.options['fluent-methods'];
-    dest.skipCheckLengthOfIdentifier =
-        context.options['skip-check-length-of-identifier'];
-    dest.entityTableName =
-        generator.getTableName(context.options['table-name'] || dest.name);
+    dest.skipCheckLengthOfIdentifier = context.options['skip-check-length-of-identifier'];
+    dest.entityTableName = generator.getTableName(context.options['table-name'] || dest.name);
     dest.entityNameCapitalized = _.upperFirst(dest.name);
     dest.entityAngularJSSuffix = context.options['angular-suffix'];
     dest.skipUiGrouping = context.options['skip-ui-grouping'];
-    dest.clientRootFolder = context.options['skip-ui-grouping']
-                                ? ''
-                                : context.options['client-root-folder'];
+    dest.clientRootFolder = context.options['skip-ui-grouping'] ? '' : context.options['client-root-folder'];
     dest.isDebugEnabled = context.options.debug;
     dest.experimental = context.options.experimental;
-    if (dest.entityAngularJSSuffix &&
-        !dest.entityAngularJSSuffix.startsWith('-')) {
+    if (dest.entityAngularJSSuffix && !dest.entityAngularJSSuffix.startsWith('-')) {
       dest.entityAngularJSSuffix = `-${dest.entityAngularJSSuffix}`;
     }
     dest.rootDir = generator.destinationRoot();
@@ -2235,7 +2157,7 @@ module.exports = class extends PrivateBase {
 
     dest.existingEnum = false;
 
-    dest.fieldNamesUnderscored = [ 'id' ];
+    dest.fieldNamesUnderscored = ['id'];
     // these variable hold field and relationship names for question options
     // during update
     dest.fieldNameChoices = [];
@@ -2249,10 +2171,10 @@ module.exports = class extends PrivateBase {
    */
   getAllJhipsterConfig(generator = this, force) {
     const configRootPath =
-        generator.configRootPath ||
-        (generator.options && generator.options.configRootPath) ||
-        (generator.configOptions && generator.configOptions.configRootPath) ||
-        '';
+      generator.configRootPath ||
+      (generator.options && generator.options.configRootPath) ||
+      (generator.configOptions && generator.configOptions.configRootPath) ||
+      '';
     return jhipsterUtils.getAllJhipsterConfig(generator, force, configRootPath);
   }
 
@@ -2260,19 +2182,25 @@ module.exports = class extends PrivateBase {
    * Fetch files from the generator-finscale-hipsters instance installed
    * @param {string} subpath : the path to fetch from
    */
-  fetchFromInstalledJHipster(subpath) { return path.join(__dirname, subpath); }
+  fetchFromInstalledJHipster(subpath) {
+    return path.join(__dirname, subpath);
+  }
 
   /**
    * Construct the entity name by appending the entity suffix.
    * @param {String} name entity name
    */
-  asEntity(name) { return name + this.entitySuffix; }
+  asEntity(name) {
+    return name + this.entitySuffix;
+  }
 
   /**
    * Construct the entity's dto name by appending the dto suffix.
    * @param {String} name entity name
    */
-  asDto(name) { return name + this.dtoSuffix; }
+  asDto(name) {
+    return name + this.dtoSuffix;
+  }
 
   get needleApi() {
     if (this._needleApi === undefined || this._needleApi === null) {

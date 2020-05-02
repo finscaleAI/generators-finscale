@@ -31,26 +31,23 @@
 //};
 
 const commonFiles = {
-  global : [ {
-    templates : [
-      'README.md', 'HEADER', 'LICENSE', 'NOTICE.txt', 'travis.sh',
-      {file : 'travis.yml', renameTo : () => '.travis.yml'}
-    ]
-  } ]
+  global: [
+    {
+      templates: ['README.md', 'HEADER', 'LICENSE', 'NOTICE.txt', 'travis.sh', { file: 'travis.yml', renameTo: () => '.travis.yml' }],
+    },
+  ],
 };
 
 function writeFiles() {
   return {
     writeFiles() {
-      this.writeFilesToDisk(
-          commonFiles, this, false,
-          this.fetchFromInstalledJHipster('common/templates'));
-    }
+      this.writeFilesToDisk(commonFiles, this, false, this.fetchFromInstalledJHipster('common/templates'));
+    },
   };
 }
 
 module.exports = {
   writeFiles,
   // prettierConfigFiles,
-  commonFiles
+  commonFiles,
 };
